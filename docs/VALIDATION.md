@@ -42,11 +42,11 @@
 
 ## 未実施と限界
 
-実機iPhone/Safari、Firefox、公開HTTPS本番URLでの検証、GitHub上のActions実行は **NOT RUN**。スマートフォンの結果はChromiumのviewport検証です。OS/ブラウザー全体は終了していません。複数タブ競合は実Web Locksの独立storeと回帰テストで検証し、今回の製品UIを2タブ同時に操作する手動競合試験は未実施です。
+実機iPhone/Safari、Firefoxは **NOT RUN**。公開HTTPS本番URLとGitHub Actionsは下記の公開検証で実施済みです。スマートフォンの結果はChromiumのviewport検証です。OS/ブラウザー全体は終了していません。複数タブ競合は実Web Locksの独立storeと回帰テストで検証し、今回の製品UIを2タブ同時に操作する手動競合試験は未実施です。
 
 保存はブラウザーの容量・権限・時刻に依存し、クラウド同期や完全なバックアップ保証はありません。旧日付の記録はJSONに含まれますが履歴画面は開発中です。製品の4活動・固定8時間・分単位集計などの制限はREADMEに記載しています。
 
-公開用Gitは新規初期化のみ。ステージング、commit、remote追加、push、デプロイは未実施。元プロジェクトの作業ツリーstatusは検証前後で一致しました。
+初回ローカル検証時点では公開用Gitは新規初期化のみでした。その後のcommit・push・デプロイ結果は下記に記録しています。元プロジェクトの作業ツリーstatusは検証前後で一致しました。
 
 
 ## 依存パッケージ修正後の再検証（2026-10-01）
@@ -57,4 +57,12 @@ Vite 5.4.21 → 6.4.3、esbuild 0.21.5 → 0.25.12、React plugin → 4.7.0。�
 
 更新後の静的成果物を新規loopback originの `/time-management-showcase/` で配信し、初回0件、開始、Output追加、一時停止、再読み込み、再開、終了、終了後再読み込みを実ブラウザーで再検証しました。HTML風文字列は文字として表示され、console error/warnは0件でした。初期のPython検証サーバーは応答中断のため別のNode静的サーバーへ切り替えました。製品サーバーは不要です。
 
-GitHubサインイン待ちのため、アップロード、Actions、公開HTTPS上の検証は引き続きNOT RUNです。既存のスマートフォンviewport・JSONファイル選択の検証結果は上記のとおりで、今回の依存更新後はタイマーUIとJSONの回帰テストを再実行しました。
+依存修正時点ではGitHubサインイン待ちでしたが、その後に公開検証を完了しました。既存のスマートフォンviewport・JSONファイル選択の検証結果は上記のとおりで、今回の依存更新後はタイマーUIとJSONの回帰テストを再実行しました。
+
+## GitHub Pages 公開検証（2026-10-01）
+
+[公開URL](https://wk1499456234-glitch.github.io/time-management-showcase/)、[Actions成功記録](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/36858077377)。`8a1746c` をデプロイ。クラウドのnpm ci、型検査、14件の回帰テスト、build、公開検査、deployはすべて成功。公開日の全依存・実行依存auditも0件。
+
+HTTPSページとJS/CSS取得は200、公開JS/CSSはローカル検証済みdistとバイト単位で一致。公開origin初回は0件。実ボタンで開始→Output追加→一時停止→再読み込み（0:00:07と原文を復元）→再開→実行中再読み込み→終了→再読み込み後の今日の記録とOutput原文を確認。console error/warnは0件。1280pxと390px viewportで横overflowなし。検証入力は架空の文章のみ。
+
+JSONファイル選択・実機モバイルの公開URL上での再検証はNOT RUN。JSONは既述のローカル実ブラウザー試験と回帰テストによる検証。Actionsには依存actionのNode20廃止/Node24移行とubuntu-latest変更予告が出ましたが、build/deployは成功。後続の保守対象です。

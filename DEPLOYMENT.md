@@ -1,6 +1,6 @@
 # 公開手順 / 发布步骤
 
-**未公開・未上传。** Approved target: `wk1499456234-glitch/time-management-showcase`, GitHub Pages. Publication is authorized; browser sign-in is pending because the owner is away. No verified public URL exists yet.
+**公開済み・已发布（2026-10-01）。** [Demo](https://wk1499456234-glitch.github.io/time-management-showcase/) · [Repository](https://github.com/wk1499456234-glitch/time-management-showcase) · [Successful deployment](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/36858077377). Deployed application commit: `8a1746c`; later documentation-only updates do not change static assets.
 
 ## 推奨案 / 建议方案
 
@@ -19,7 +19,7 @@ Official instructions checked during preparation: [GitHub Pages custom workflows
 ## 確認後の操作 / 确认后的操作
 
 1. Create an empty public repository under the approved owner. Use this directory's independent local Git history; do not copy the original repository's `.git`.
-2. Run `npm ci`, `npm run typecheck`, `npm test`, `npm run build`, `npm run check:public`. Review `git status` and the exact staged diff. Stage only the reviewed public manifest, commit, then push to the approved remote. A local initial commit is prepared after the dependency regression checks. No push has been performed. Reuse the local history and inspect any existing remote repository before uploading.
+2. Run `npm ci`, `npm run typecheck`, `npm test`, `npm run build`, `npm run check:public`. Review `git status` and the exact staged diff. Stage only the reviewed public manifest, commit, then push to the approved remote. The reviewed local history has been pushed. Reuse the existing repository for subsequent releases; do not recreate it.
 3. In repository **Settings → Pages → Build and deployment**, choose **GitHub Actions**. Protect the `github-pages` environment if required by the owner.
 4. In **Actions**, select **Deploy time management showcase**, choose the reviewed branch/commit, and manually run the workflow. Its deployed URL is the authoritative URL; add it to both READMEs only after success.
 5. Use a fresh browser profile to verify first visit, start/pause/resume/stop, Output, reload, JSON export/import and mobile layout on the actual HTTPS address. Confirm network requests remain on the public site and data from two browsers is separate.

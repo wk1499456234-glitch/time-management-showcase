@@ -4,7 +4,7 @@
 
 仕事・学習・運動に「何分使ったか」だけでなく、「何ができたか」を短い文章で残す個人用ツールです。1日をすべて監視するのではなく、自分で開始した活動の有効時間を記録します。たとえば TypeScript の学習後に「型の違いを確認し、サンプルを1つ作成した」と書けば、時間と実際の成果を一緒に振り返れます。
 
-これは実装済み部分の**公開体験版**です。完成した V1 全体ではありません。公開先は `wk1499456234-glitch/time-management-showcase` と GitHub Pages に承認済みです。現在はログイン待ちで未公開です。実際のリンクはデプロイ検証後に追記します。ローカルで実行できます。
+これは実装済み部分の**公開体験版**です。完成したV1全体ではありません。[公開デモ](https://wk1499456234-glitch.github.io/time-management-showcase/) · [GitHubリポジトリ](https://github.com/wk1499456234-glitch/time-management-showcase)。2026年10月1日に公開し、HTTPSページで計時・保存・再読み込みを検証しました。
 
 ![デスクトップでの実画面（検証用の架空記録）](docs/screenshots/desktop.png)
 
@@ -107,6 +107,6 @@ npm run preview -- --host 127.0.0.1 --port 5196 --strictPort
 
 `typecheck` は型検査、`test` は保存・計時の回帰検証、`build` は `dist/` の静的ファイル生成、`check:public` は公開ファイルとビルド内の禁止パターン検査、`preview` は本番用ビルドの確認です。`dist/index.html` を直接ダブルクリックせず、HTTP サーバー経由で開きます。開発・プレビューでポートが違うと記録の保存先も別になります。
 
-公開手順は [DEPLOYMENT.md](DEPLOYMENT.md)、公開候補ファイルは [PUBLIC-FILES.txt](PUBLIC-FILES.txt) を参照してください。公開・アップロードはまだ実行していません。
+公開手順は [DEPLOYMENT.md](DEPLOYMENT.md)、公開候補ファイルは [PUBLIC-FILES.txt](PUBLIC-FILES.txt) を参照してください。公開・アップロード済みです。
 
 第1段階では現在の静的体験版を GitHub Pages で公開します。現在、サーバーデータベースはありません。第2段階は日本時間2026年10月9日より前を目標に、Cloudflareでの公開実行、サーバーでの記録保存・読み出し、Output更新、利用者間のデータ分離と安全性・機能検証を予定しています。これらは未実装であり、現在の静的版公開の前提条件ではありません。

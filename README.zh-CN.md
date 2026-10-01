@@ -4,7 +4,7 @@
 
 这是面向工作、学习、运动的个人时间记录工具。它不仅回答“做了多久”，也让人用一句话记录“做成了什么”。例如学习 TypeScript 后写下“确认了类型差异，完成了一个示例”，就可以把时间与实际成果一起回看。它只记录主动开始的有效活动，不监控全天生活。
 
-当前是已完成功能的**公开体验版**，不是完整 V1。已授权发布到 `wk1499456234-glitch/time-management-showcase` 和 GitHub Pages；当前因等待登录尚未公开，实际链接将在部署验证后填写。目前可本地运行。
+当前是已完成功能的**公开体验版**，不是完整 V1。[在线体验](https://wk1499456234-glitch.github.io/time-management-showcase/) · [GitHub 仓库](https://github.com/wk1499456234-glitch/time-management-showcase)。已于2026年10月1日发布，并在实际 HTTPS 页面验证计时、保存与刷新恢复。
 
 ![桌面实测截图，内容为隔离测试记录](docs/screenshots/desktop.png)
 
@@ -110,4 +110,4 @@ npm run preview -- --host 127.0.0.1 --port 5196 --strictPort
 
 依次用于类型检查、计时/保存回归测试、生成 `dist/`、检查公开文件和构建内容、预览生产构建。不要直接双击 HTML，应通过 HTTP 服务器访问。开发和预览端口不同，浏览器记录也相互独立。
 
-发布步骤见 [DEPLOYMENT.md](DEPLOYMENT.md)，拟公开清单见 [PUBLIC-FILES.txt](PUBLIC-FILES.txt)。当前尚未上传或部署。
+发布步骤见 [DEPLOYMENT.md](DEPLOYMENT.md)，拟公开清单见 [PUBLIC-FILES.txt](PUBLIC-FILES.txt)。当前已上传并部署。
