@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.test-output/
+.local-review/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+.env*
+*.log
