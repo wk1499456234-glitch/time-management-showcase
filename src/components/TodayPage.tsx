@@ -17,6 +17,7 @@ export function TodayPage({ engine }: { engine: SessionEngine }) {
         <SessionSummaryCard session={engine.lastFinishedSession} onClose={engine.dismissLastSummary} />
       )}
 
+      <div id="timer" className="section-target" tabIndex={-1}>
       <fieldset className="session-controls" disabled={engine.conflict || engine.pending}>
       {engine.status === 'idle' ? (
         <ActivityStart onStart={engine.start} />
@@ -35,6 +36,7 @@ export function TodayPage({ engine }: { engine: SessionEngine }) {
       )}
 
       </fieldset>
+      </div>
       <DailySessionsList sessions={engine.finishedSessions} onEditOutput={(sessionId, outputId, text) => engine.editOutput(sessionId, outputId, text)} />
     </section>
   )

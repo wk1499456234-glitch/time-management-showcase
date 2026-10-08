@@ -1,6 +1,7 @@
 import type zhCN from './zh-CN'
 
 const jaJP: typeof zhCN = {
+  sections: { label: '機能への移動', timer: '計時・Output', records: '本日の記録', backup: '保存・バックアップ' },
   showcase: {
   "guide": "体験版の使い方と制限",
   "title": "時間管理",

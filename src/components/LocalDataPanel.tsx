@@ -15,7 +15,7 @@ export function LocalDataPanel({ engine }: { engine: SessionEngine }) {
   const [confirmReload, setConfirmReload] = useState(false)
   const errorText = (key: string) => key ? t(key.startsWith('errors.') ? key : 'errors.actionFailed') : ''
   const state = engine.unsaved ? 'unsaved' : engine.conflict || engine.warning ? 'attention' : engine.data.revision === 'empty' ? 'ready' : 'saved'
-  return <section className="local-data" aria-label={t('data.title')}>
+  return <section id="backup" tabIndex={-1} className="local-data section-target" aria-label={t('data.title')}>
     {(engine.warning || engine.error) && <p role="alert">{errorText(engine.warning)} {errorText(engine.error)}</p>}
     <details>
       <summary>{t('data.title')} · {t(`data.${state}`)}</summary>

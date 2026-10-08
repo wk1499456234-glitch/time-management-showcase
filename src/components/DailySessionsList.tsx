@@ -8,7 +8,7 @@ export function DailySessionsList({ sessions, onEditOutput }: { sessions: Finish
   const { t, locale } = useLocale()
 
   return (
-    <section className="daily-sessions">
+    <section id="records" className="daily-sessions section-target" tabIndex={-1}>
       <h2 className="section__title">{t('today.todaySessions')}</h2>
       {sessions.length === 0 ? (
         <p className="daily-sessions__empty">{t('today.noSessions')}</p>

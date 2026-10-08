@@ -1,4 +1,5 @@
 const zhCN = {
+  sections: { label: '功能导航', timer: '计时与 Output', records: '今日记录', backup: '保存与备份' },
   showcase: {
   "guide": "体验说明与当前限制",
   "title": "时间管理",
