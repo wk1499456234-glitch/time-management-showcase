@@ -7,6 +7,7 @@ PROVENANCE.md
 PUBLIC-FILES.txt
 README.md
 README.zh-CN.md
+docs/DEVELOPMENT-PROGRESS.md
 docs/VALIDATION.md
 docs/screenshots/desktop.png
 docs/screenshots/mobile-overview.png
