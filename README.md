@@ -8,7 +8,7 @@
 
 1. [タイマー](https://wk1499456234-glitch.github.io/time-management-showcase/#/timer)で活動を選び「開始」。一時停止・再開・終了に対応します。一時停止時間は有効時間に含めません。
 2. 活動中に Output を入力し「Outputを保存」。改行や空白を含む原文を保存します。数量のない感想・整理も記録できます。
-3. [記録](https://wk1499456234-glitch.github.io/time-management-showcase/#/records)で「架空の固定例」または「このブラウザーの試用記録」を選びます。日付の行を開くと原文・数量・単位・根拠を確認できます。試用 Output は編集可能、固定例は読み取り専用です。
+3. [記録](https://wk1499456234-glitch.github.io/time-management-showcase/#/records)で「サンプル記録」または「このブラウザーの試用記録」を選びます。日付の行を開くと原文・数量・単位・根拠を確認できます。試用 Output は編集可能、固定例は読み取り専用です。
 4. [振り返り](https://wk1499456234-glitch.github.io/time-management-showcase/#/review)で週を選択。先にプログラムの時間・成果・解析状況を確認し、「5週の比較」や各気づきの「根拠を見る」を開きます。
 5. [設定](https://wk1499456234-glitch.github.io/time-management-showcase/#/settings)で日本語／中文を切り替え、試用記録の JSON バックアップを保存できます。
 
