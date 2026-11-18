@@ -8,7 +8,7 @@
 
 1. 在[计时](https://wk1499456234-glitch.github.io/time-management-showcase/#/timer)选择活动并开始。支持暂停、恢复、结束并保存；暂停时间不计入有效时间。
 2. 活动期间填写 Output，点击“保存 Output”。保留原文、换行和空白；没有数量的理解、整理或感想也可以记录。
-3. 在[记录](https://wk1499456234-glitch.github.io/time-management-showcase/#/records)选择固定示例或当前浏览器试用记录。展开活动可查看原文、内容、数量、单位与依据。试用原文可编辑；固定示例只读。
+3. 在[记录](https://wk1499456234-glitch.github.io/time-management-showcase/#/records)选择“示例记录”或“当前浏览器试用记录”。展开活动可查看原文、内容、数量、单位与依据。试用原文可编辑；固定示例只读。
 4. 在[回顾](https://wk1499456234-glitch.github.io/time-management-showcase/#/review)选择示例周，先看程序统计，再打开“五周比较”及发现旁的“展开依据”。
 5. 在[设置](https://wk1499456234-glitch.github.io/time-management-showcase/#/settings)切换语言、导出试用记录 JSON 或预览导入备份。
 
