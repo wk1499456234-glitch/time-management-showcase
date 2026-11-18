@@ -97,3 +97,18 @@ READMEから分離した実装説明です。今回の文書整理による機�
 型検査、既存14件の回帰テスト、build、公開内容検査、文書リンク確認、`git diff --check` はPASS。スマートフォン相当の幅はChromeによるシミュレーションです。実機スマートフォン、Safari、Firefox、および製品UIの2タブ同時編集は今回の検証対象外です。
 
 中文补充：本次实际操作了三个定位入口及完整计时流程，对比移动前后的保存数据，确认导航不修改记录。桌面及390/320像素宽度检查均通过；手机宽度模拟不等于真实手机验收。既有历史验证记录保持原样，上述为本次新增验证。
+
+## 2026-11-18 — AI showcase candidate
+
+The earlier sections are historical validation, not evidence for newly added features.
+
+- PASS: TypeScript and Vite production build; 17 tests covering timer persistence, original whitespace, malformed/duplicate/conflicting imports, existing-store compatibility, separate fixture data, routes, and recomputation of every week's effective time and typed quantities.
+- PASS: 30 fictional activities, 6 per week, 180 minutes per week; five minutes of pause excluded from the applicable 35-minute intervals. Target week: 60 reviewed words, 20 attempted questions, 12 pages, one qualitative item without quantity.
+- PASS: Three real parse requests and one real Japanese review through the isolated product UI. Confirmed types using UI; original text and AI quantities retained. The model input included four complete historical weeks, without the private expected-answer file.
+- PASS: Saved review survives refresh, closed/reopened page and backend restart; subsequent reads and language changes made no additional inference requests. Full SQLite backup restored into a new path; original records, quantities and review matched.
+- Quality boundary: the model explained mostly the previous-week difference. The separate program table shows all four prior weeks and their mean. A technical time label was replaced by the existing presentation layer. Goal, difficulty and learning-quality limitations are shown separately by the program; the model's suggestions are optional, not assigned targets.
+- Browser candidate: real four-page navigation, back navigation, paused timer/draft retention, reload, visitor record separation, historical week without a saved review, Japanese/Chinese labels, desktop 1280px and mobile 390px/320px checked. No document-level horizontal overflow observed at 320px; the statistics table scrolls within its own region.
+- Source/build separation: static JSON only; no API client in the public runtime. Production CSP uses `connect-src 'none'`. No source maps or private backend are shipped.
+- Limitations: real iPhone/Safari, mobile on-screen keyboard and system reduced-motion setting changes have NOT RUN. The inspected browser reports reduced motion off; the existing fallback behavior is retained. Full browser network waterfall capture is not exposed by the current browser tool; resource/security/source checks are recorded separately, not described as a waterfall inspection.
+
+Public deployment verification is recorded with the released commit and Actions run, separately from these local checks.

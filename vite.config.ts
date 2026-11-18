@@ -7,7 +7,7 @@ export default defineConfig({
     name: 'production-csp',
     apply: 'build',
     transformIndexHtml() {
-      return [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" }, injectTo: 'head' }]
+      return [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" }, injectTo: 'head' }]
     },
   }],
 })

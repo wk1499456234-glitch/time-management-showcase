@@ -12,6 +12,7 @@ export function LanguageSwitch() {
         <button
           key={key}
           type="button"
+          aria-pressed={locale === key}
           className={`lang-switch__item${locale === key ? ' lang-switch__item--active' : ''}`}
           onClick={() => setLocale(key)}
         >

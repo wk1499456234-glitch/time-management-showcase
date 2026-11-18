@@ -29,6 +29,7 @@ src/components/RunningPanel.tsx
 src/components/SessionSummaryCard.tsx
 src/components/TodayPage.tsx
 src/data/activities.ts
+src/data/ai-demo.json
 src/i18n/index.tsx
 src/i18n/locales/ja-JP.ts
 src/i18n/locales/zh-CN.ts
@@ -38,11 +39,18 @@ src/state/sessionData.ts
 src/state/useSessionEngine.ts
 src/styles/global.css
 src/types/index.ts
+src/ui/DemoPages.tsx
+src/ui/motion.tsx
+src/ui/product.css
+src/ui/routes.ts
+src/ui/scrollReveal.ts
+src/ui/showcase.css
 src/utils/stats.ts
 src/utils/time.ts
 src/vite-env.d.ts
 tests/browser-storage.ts
 tests/build-browser-harness.mjs
+tests/demo.test.ts
 tests/persistence.test.ts
 tests/run-tests.mjs
 tsconfig.json

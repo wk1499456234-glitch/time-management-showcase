@@ -1,0 +1,1000 @@
+{
+  "schema": 1,
+  "fixture": "fictional-learning-five-weeks",
+  "timezone": "Asia/Tokyo",
+  "weekStartsOn": "monday",
+  "targetWeek": "2026-11-09",
+  "records": [
+    {
+      "id": "fiction-w01-s01",
+      "startAt": 1791802800000,
+      "endAt": 1791804600000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を40語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を40語復習した。",
+          "quantity": 40.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を40語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w01-s02",
+      "startAt": 1791889200000,
+      "endAt": 1791891300000,
+      "activeMs": 1800000,
+      "pauseMs": 300000,
+      "pauseIntervals": [
+        {
+          "start": 1791889800000,
+          "end": 1791890100000
+        }
+      ],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+          "quantity": 9.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w01-s03",
+      "startAt": 1791975600000,
+      "endAt": 1791977400000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を2ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を2ページ読んだ。",
+          "quantity": 2.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を2ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w01-s04",
+      "startAt": 1792148400000,
+      "endAt": 1792150200000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を40語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を40語復習した。",
+          "quantity": 40.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を40語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w01-s05",
+      "startAt": 1792234800000,
+      "endAt": 1792236600000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+          "quantity": 9.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を9問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w01-s06",
+      "startAt": 1792321200000,
+      "endAt": 1792323000000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を2ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を2ページ読んだ。",
+          "quantity": 2.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を2ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s01",
+      "startAt": 1792407600000,
+      "endAt": 1792409400000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を45語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を45語復習した。",
+          "quantity": 45.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を45語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s02",
+      "startAt": 1792494000000,
+      "endAt": 1792496100000,
+      "activeMs": 1800000,
+      "pauseMs": 300000,
+      "pauseIntervals": [
+        {
+          "start": 1792494600000,
+          "end": 1792494900000
+        }
+      ],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s03",
+      "startAt": 1792580400000,
+      "endAt": 1792582200000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を3ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を3ページ読んだ。",
+          "quantity": 3.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を3ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s04",
+      "startAt": 1792753200000,
+      "endAt": 1792755000000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を45語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を45語復習した。",
+          "quantity": 45.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を45語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s05",
+      "startAt": 1792839600000,
+      "endAt": 1792841400000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w02-s06",
+      "startAt": 1792926000000,
+      "endAt": 1792927800000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を3ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を3ページ読んだ。",
+          "quantity": 3.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を3ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s01",
+      "startAt": 1793012400000,
+      "endAt": 1793014200000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を50語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を50語復習した。",
+          "quantity": 50.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を50語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s02",
+      "startAt": 1793098800000,
+      "endAt": 1793100900000,
+      "activeMs": 1800000,
+      "pauseMs": 300000,
+      "pauseIntervals": [
+        {
+          "start": 1793099400000,
+          "end": 1793099700000
+        }
+      ],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+          "quantity": 11.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s03",
+      "startAt": 1793185200000,
+      "endAt": 1793187000000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を4ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を4ページ読んだ。",
+          "quantity": 4.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を4ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s04",
+      "startAt": 1793358000000,
+      "endAt": 1793359800000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を50語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を50語復習した。",
+          "quantity": 50.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を50語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s05",
+      "startAt": 1793444400000,
+      "endAt": 1793446200000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+          "quantity": 11.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を11問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w03-s06",
+      "startAt": 1793530800000,
+      "endAt": 1793532600000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を4ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を4ページ読んだ。",
+          "quantity": 4.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を4ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s01",
+      "startAt": 1793617200000,
+      "endAt": 1793619000000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を45語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を45語復習した。",
+          "quantity": 45.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を45語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s02",
+      "startAt": 1793703600000,
+      "endAt": 1793705700000,
+      "activeMs": 1800000,
+      "pauseMs": 300000,
+      "pauseIntervals": [
+        {
+          "start": 1793704200000,
+          "end": 1793704500000
+        }
+      ],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s03",
+      "startAt": 1793790000000,
+      "endAt": 1793791800000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を3ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を3ページ読んだ。",
+          "quantity": 3.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を3ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s04",
+      "startAt": 1793962800000,
+      "endAt": 1793964600000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を45語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を45語復習した。",
+          "quantity": 45.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を45語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s05",
+      "startAt": 1794049200000,
+      "endAt": 1794051000000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w04-s06",
+      "startAt": 1794135600000,
+      "endAt": 1794137400000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を3ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を3ページ読んだ。",
+          "quantity": 3.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を3ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w05-s01",
+      "startAt": 1794222000000,
+      "endAt": 1794223800000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を40語復習する予定だった。実際には30語を復習した。残り10語はまだ復習していない。",
+      "source": "real-ai-human-confirmed",
+      "items": [
+        {
+          "content": "実際には30語を復習した",
+          "quantity": 30.0,
+          "unit": "語",
+          "source_quote": "実際には30語を復習した",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": [
+        {
+          "content": "実際には30語を復習した",
+          "quantity": 30.0,
+          "unit": "語",
+          "source_quote": "実際には30語を復習した"
+        }
+      ],
+      "confirmation": "内容・数量・単位は変更せず、成果の種類を人が確認。"
+    },
+    {
+      "id": "fiction-w05-s02",
+      "startAt": 1794308400000,
+      "endAt": 1794310500000,
+      "activeMs": 1800000,
+      "pauseMs": 300000,
+      "pauseIntervals": [
+        {
+          "start": 1794309000000,
+          "end": 1794309300000
+        }
+      ],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を15問解く予定だったが、実際に解いたのは10問。残り5問は未着手。正答数は記録していない。",
+      "source": "real-ai-human-confirmed",
+      "items": [
+        {
+          "content": "実際に解いたのは10問",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "実際に解いたのは10問",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": [
+        {
+          "content": "実際に解いたのは10問",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "実際に解いたのは10問"
+        }
+      ],
+      "confirmation": "内容・数量・単位は変更せず、成果の種類を人が確認。"
+    },
+    {
+      "id": "fiction-w05-s03",
+      "startAt": 1794394800000,
+      "endAt": 1794396600000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を6ページ読んだ。仮定法と時制の関係を整理した。",
+      "source": "real-ai-human-confirmed",
+      "items": [
+        {
+          "content": "教材を6ページ読んだ",
+          "quantity": 6.0,
+          "unit": "ページ",
+          "source_quote": "教材を6ページ読んだ",
+          "type": "教材の読書"
+        },
+        {
+          "content": "仮定法と時制の関係を整理した",
+          "quantity": null,
+          "unit": null,
+          "source_quote": "仮定法と時制の関係を整理した",
+          "type": "概念の整理"
+        }
+      ],
+      "aiItems": [
+        {
+          "content": "教材を6ページ読んだ",
+          "quantity": 6.0,
+          "unit": "ページ",
+          "source_quote": "教材を6ページ読んだ"
+        },
+        {
+          "content": "仮定法と時制の関係を整理した",
+          "quantity": null,
+          "unit": null,
+          "source_quote": "仮定法と時制の関係を整理した"
+        }
+      ],
+      "confirmation": "内容・数量・単位は変更せず、成果の種類を人が確認。"
+    },
+    {
+      "id": "fiction-w05-s04",
+      "startAt": 1794567600000,
+      "endAt": 1794569400000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】英単語を30語復習した。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】英単語を30語復習した。",
+          "quantity": 30.0,
+          "unit": "語",
+          "source_quote": "【架空データ】英単語を30語復習した。",
+          "type": "英単語の復習"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w05-s05",
+      "startAt": 1794654000000,
+      "endAt": 1794655800000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "quantity": 10.0,
+          "unit": "問",
+          "source_quote": "【架空データ】文法問題を10問解いた。正答数は記録していない。",
+          "type": "文法問題への取り組み"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    },
+    {
+      "id": "fiction-w05-s06",
+      "startAt": 1794740400000,
+      "endAt": 1794742200000,
+      "activeMs": 1800000,
+      "pauseMs": 0,
+      "pauseIntervals": [],
+      "activity": "TOEIC",
+      "raw": "【架空データ】教材を6ページ読んだ。",
+      "source": "fictional-background",
+      "items": [
+        {
+          "content": "【架空データ】教材を6ページ読んだ。",
+          "quantity": 6.0,
+          "unit": "ページ",
+          "source_quote": "【架空データ】教材を6ページ読んだ。",
+          "type": "教材の読書"
+        }
+      ],
+      "aiItems": null,
+      "confirmation": null
+    }
+  ],
+  "weeks": [
+    {
+      "week": "2026-10-12",
+      "startAt": 1791730800000,
+      "endAt": 1792335600000,
+      "activeMs": 10800000,
+      "activityMs": {
+        "act-toeic": 10800000
+      },
+      "coverage": {
+        "total": 6,
+        "completed": 6,
+        "pending": 0,
+        "processing": 0,
+        "failed": 0,
+        "unconfirmed": 0
+      },
+      "quantities": [
+        {
+          "type": "教材の読書",
+          "unit": "ページ",
+          "quantity": 4.0
+        },
+        {
+          "type": "文法問題への取り組み",
+          "unit": "問",
+          "quantity": 18.0
+        },
+        {
+          "type": "英単語の復習",
+          "unit": "語",
+          "quantity": 80.0
+        }
+      ],
+      "qualitative": [],
+      "historyWeeksWithRecords": 0
+    },
+    {
+      "week": "2026-10-19",
+      "startAt": 1792335600000,
+      "endAt": 1792940400000,
+      "activeMs": 10800000,
+      "activityMs": {
+        "act-toeic": 10800000
+      },
+      "coverage": {
+        "total": 6,
+        "completed": 6,
+        "pending": 0,
+        "processing": 0,
+        "failed": 0,
+        "unconfirmed": 0
+      },
+      "quantities": [
+        {
+          "type": "教材の読書",
+          "unit": "ページ",
+          "quantity": 6.0
+        },
+        {
+          "type": "文法問題への取り組み",
+          "unit": "問",
+          "quantity": 20.0
+        },
+        {
+          "type": "英単語の復習",
+          "unit": "語",
+          "quantity": 90.0
+        }
+      ],
+      "qualitative": [],
+      "historyWeeksWithRecords": 1
+    },
+    {
+      "week": "2026-10-26",
+      "startAt": 1792940400000,
+      "endAt": 1793545200000,
+      "activeMs": 10800000,
+      "activityMs": {
+        "act-toeic": 10800000
+      },
+      "coverage": {
+        "total": 6,
+        "completed": 6,
+        "pending": 0,
+        "processing": 0,
+        "failed": 0,
+        "unconfirmed": 0
+      },
+      "quantities": [
+        {
+          "type": "教材の読書",
+          "unit": "ページ",
+          "quantity": 8.0
+        },
+        {
+          "type": "文法問題への取り組み",
+          "unit": "問",
+          "quantity": 22.0
+        },
+        {
+          "type": "英単語の復習",
+          "unit": "語",
+          "quantity": 100.0
+        }
+      ],
+      "qualitative": [],
+      "historyWeeksWithRecords": 2
+    },
+    {
+      "week": "2026-11-02",
+      "startAt": 1793545200000,
+      "endAt": 1794150000000,
+      "activeMs": 10800000,
+      "activityMs": {
+        "act-toeic": 10800000
+      },
+      "coverage": {
+        "total": 6,
+        "completed": 6,
+        "pending": 0,
+        "processing": 0,
+        "failed": 0,
+        "unconfirmed": 0
+      },
+      "quantities": [
+        {
+          "type": "教材の読書",
+          "unit": "ページ",
+          "quantity": 6.0
+        },
+        {
+          "type": "文法問題への取り組み",
+          "unit": "問",
+          "quantity": 20.0
+        },
+        {
+          "type": "英単語の復習",
+          "unit": "語",
+          "quantity": 90.0
+        }
+      ],
+      "qualitative": [],
+      "historyWeeksWithRecords": 3
+    },
+    {
+      "week": "2026-11-09",
+      "startAt": 1794150000000,
+      "endAt": 1794754800000,
+      "activeMs": 10800000,
+      "activityMs": {
+        "act-toeic": 10800000
+      },
+      "coverage": {
+        "total": 6,
+        "completed": 6,
+        "pending": 0,
+        "processing": 0,
+        "failed": 0,
+        "unconfirmed": 0
+      },
+      "quantities": [
+        {
+          "type": "教材の読書",
+          "unit": "ページ",
+          "quantity": 12.0
+        },
+        {
+          "type": "文法問題への取り組み",
+          "unit": "問",
+          "quantity": 20.0
+        },
+        {
+          "type": "英単語の復習",
+          "unit": "語",
+          "quantity": 60.0
+        }
+      ],
+      "qualitative": [
+        "仮定法と時制の関係を整理した"
+      ],
+      "historyWeeksWithRecords": 4
+    }
+  ],
+  "review": {
+    "week": "2026-11-09",
+    "language": "ja-JP",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "generatedAt": 1794999462309,
+    "result": {
+      "summary": "今週は、英語学習の記録が安定して積み上がり、内容面でも整理が進んでいます。",
+      "findings": [
+        {
+          "type": "trend",
+          "headline": "読書量が増えている",
+          "detail": "教材の読書は12.0ページで、前週の6.0ページから増えています。有効時間 は 03:00:00 です。",
+          "evidence": [
+            "current",
+            "previous-1"
+          ]
+        },
+        {
+          "type": "trend",
+          "headline": "文法問題は安定して継続",
+          "detail": "文法問題への取り組みは20.0問で、前週の20.0問と同じです。有効時間 は 03:00:00 です。",
+          "evidence": [
+            "current",
+            "previous-1"
+          ]
+        },
+        {
+          "type": "trend",
+          "headline": "英単語の復習は前週より少なめ",
+          "detail": "英単語の復習は60.0語で、前週の90.0語から減っています。有効時間 は 03:00:00 です。",
+          "evidence": [
+            "current",
+            "previous-1"
+          ]
+        },
+        {
+          "type": "execution",
+          "headline": "内容の整理が進んでいる",
+          "detail": "今週は『仮定法と時制の関係を整理した』という振り返りがあり、学習内容のまとめが行われています。",
+          "evidence": [
+            "current"
+          ]
+        },
+        {
+          "type": "consistency",
+          "headline": "記録処理は完了している",
+          "detail": "今週は原記録6件がすべて処理済みで、未処理の記録はありません。",
+          "evidence": [
+            "current"
+          ]
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "次週は英単語の復習を前週に近い水準まで戻す",
+          "reason": "今週は60.0語で、前週の90.0語より少なかったため、復習枠を先に確保するとバランスを取りやすいです。"
+        },
+        {
+          "action": "文法問題の取り組みを維持しつつ、仮定法と時制の整理内容を振り返りに残す",
+          "reason": "文法問題は20.0問で安定しており、今週は内容面の整理も行われているため、学習のつながりを残しやすいです。"
+        }
+      ],
+      "caveats": [
+        "時間予算は未設定のため、予算に対する達成率は判断しません。",
+        "記録履歴はありますが、完全な履歴であるとは限りません。",
+        "記録処理は完了していますが、未処理記録の有無は学習の達成度を意味しません。"
+      ]
+    },
+    "presentation": {
+      "version": "labels-v1",
+      "changed": true,
+      "fields": {
+        "activeTimeHHMMSS": 3
+      },
+      "originalRetained": true
+    }
+  },
+  "usage": {
+    "input": 4640,
+    "cachedInput": 0,
+    "output": 1230,
+    "reasoningSubset": 406,
+    "estimatedUsd": 0.009015,
+    "calls": {
+      "parse": 3,
+      "review": 1
+    }
+  }
+}

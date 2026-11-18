@@ -31,3 +31,11 @@ Any approved HTTPS static host can serve the output of `npm run build` with publ
 ## 保存領域の注意 / 保存域注意
 
 Browser storage belongs to an origin (protocol + host + port), **not to a URL path**. Different sites on the same account's Pages origin can access the same origin storage. This showcase uses its own key to avoid accidental naming collisions, but that is not a security boundary. Use a dedicated origin if isolation from other applications on that origin is required. A change of domain requires users to export from the old address and import at the new address.
+
+## 2026-11-18 release procedure
+
+Use the existing `main` and existing manually dispatched Pages workflow. This update uses four hash routes (`#/timer`, `#/records`, `#/review`, `#/settings`), with legacy `#timer`, `#records`, `#review`, `#backup` compatibility. Assets remain relative for the repository subpath. No server rewrite is needed.
+
+Before publication, run the listed type/build/test/public checks and regenerate `PUBLIC-FILES.txt` and `CHECKPOINT.sha256` from reviewed files. Publish only that allowlist. Verify the Actions deployment and the actual served hashed JS/CSS and release marker `20261118-ai-demo-v1`; an old site's HTTP 200 is not deployment evidence.
+
+Rollback reference before this update: `175f5d171f62ae787e75723a22b0486a4d5fe5ec`. If rollback is required, revert the new public change with a normal commit and dispatch the same workflow. Do not rewrite branch history. Browser records remain in the same storage key; back up any current trial activity first. Public rollback does not operate on the independent desktop product or its database.
