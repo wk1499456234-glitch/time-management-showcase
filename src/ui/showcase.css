@@ -1,2 +1,102 @@
 .page-transition{animation:appear .2s ease}.scope-note{font-size:13px;color:var(--muted);margin:14px 0 24px}.sample-entry{padding:32px 0;border-top:1px solid var(--line);margin-top:32px}.date-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:28px}.date-heading h2{font-size:15px}.date-group{margin-bottom:10px}.history-content h3{margin-top:20px}.history-content p{overflow-wrap:anywhere}.item-type{display:block;font-size:11px}.trial-record{border-bottom:1px solid var(--line);padding:16px 0}.empty-state{padding:40px 0;color:var(--muted)}.detail-inner{padding:14px 0 22px}.detail-inner>section+section{margin-top:18px}.table-scroll{overflow:auto;max-width:100%}table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}th,td{text-align:left;border-bottom:1px solid var(--line);padding:12px 16px}th:first-child,td:first-child{padding-left:0}caption{text-align:left;padding:12px 0;color:var(--muted)}th{font-weight:550}.qualitative{margin:20px 0}.facts{padding-bottom:26px}.quantity-grid>div{min-width:110px}.quantity-grid>div>span{display:block}.context-notes{border-top:1px solid var(--line);padding:22px 0}.context-notes p+p{margin-top:10px}.suggestions article{display:block!important;padding-top:20px}.suggestions article p{margin-top:8px}.suggestions h4{font-size:15px}.review-body>details{border-bottom:1px solid var(--line);font-size:13px}.local-data__actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.local-data__actions label input{display:block;width:100%;font-size:12px}.btn{min-height:44px;border:1px solid var(--line);background:transparent;border-radius:6px;padding:9px 15px}.output-list{list-style:none;padding:0}.output-list__item{border-bottom:1px solid var(--line);padding:16px 0;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}.output-list__text{flex:1;white-space:pre-wrap;overflow-wrap:anywhere;min-width:140px}.output-list__time{font-size:12px;color:var(--muted)}.language-switch{display:flex;gap:12px}.language-switch button{border:1px solid var(--line);background:transparent;border-radius:6px;padding:8px 16px}.language-switch button[aria-pressed=true]{background:var(--ink);color:white}.start-state .button{margin-top:24px}.activity-options .selected{background:var(--ink);color:white}.composer textarea{width:100%;margin-top:14px}.main-content>div{min-width:0}.table-scroll:focus-visible{outline:2px solid #536e8c}.finding-number{font-size:12px;color:var(--muted)}.trial-record summary{flex-wrap:wrap}.site-header{position:relative}.setting-row>div{min-width:0}.page-tools select{max-width:100%}@media(max-width:600px){.date-heading{align-items:flex-start}.date-heading span{font-size:10px}.quantity-grid{gap:18px}.quantity-grid>div{min-width:85px}.scope-note{font-size:12px}.site-footer>span:last-child{display:block}.table-scroll{margin-right:-4px}.start-state{padding-bottom:16px}.sample-entry{padding:20px 0}.composer{margin-top:20px}.language-switch{flex-wrap:wrap}}@media(prefers-reduced-motion:reduce){.page-transition{animation:none}}
 .lang-switch{display:flex;gap:12px}.lang-switch button{border:1px solid var(--line);background:transparent;border-radius:6px;padding:8px 16px}.lang-switch button[aria-pressed=true]{background:var(--ink);color:white}
+
+/* Reading scale shared by all four pages. Keep source data and motion unchanged. */
+:root{font-size:18px;font-weight:500;line-height:1.8;--ink:#1d232b;--muted:#4b5563}
+:root:lang(ja-JP){font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Meiryo","Noto Sans JP",sans-serif}
+:root:lang(zh-CN){font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+h1,h2,h3,h4,strong,th{font-weight:600}
+.main-content{max-width:1280px;padding:40px 40px 0}
+.site-header,.site-footer{max-width:1360px}
+.page-heading h1{font-size:38px;line-height:1.4}
+.page-heading p{font-size:18px}
+h2,.review-section h2,.setting-row h2{font-size:26px}
+h3,.history-content h3,.setting-row h3,.review-body h3,.review-body>h3{font-size:20px}
+h4,.finding h4,.suggestions h4{font-size:19px}
+.brand{font-size:22px;font-weight:600}
+.main-nav a{font-size:17px;font-weight:600;min-height:48px}
+.header-edition{font-size:14px}
+button,.button,.text-button,.btn,.activity-options button,.local-data button,.local-data label.btn,.session-outputs .text-button{font-size:17px;font-weight:600;min-height:48px}
+input,select,textarea,.composer textarea,.local-data__actions label input{font-size:18px;font-weight:500;line-height:1.7}
+label,.page-tools label,.local-data>details>summary{font-size:16px;font-weight:600}
+.page-tools{flex-wrap:wrap;gap:20px}
+.page-tools label{display:grid;gap:8px;max-width:100%}
+.page-tools select{min-height:48px;min-width:0}
+summary{min-height:48px;font-size:17px;line-height:1.7}
+small,.small,.overline,.as-of,.scope-note,.context-notes,.site-footer,.item-type,.output-list__time,.finding-number,.composer-footer .small,.setting-row p.small{font-size:15px;line-height:1.8}
+.muted,.context-notes,.as-of,.scope-note,.finding-number{color:var(--muted)}
+.date-heading h2{font-size:20px}
+.date-heading span,.history-date,.history-date small{font-size:15px}
+.history-description strong{font-size:19px;font-weight:600}
+.history-description>span{font-size:17px;line-height:1.8}
+.history-time{font-size:18px}
+.full-raw,.outcome,.raw-summary,.qualitative{font-size:18px;line-height:1.9}
+.outcome{gap:20px}
+.quantity{flex-shrink:0}
+.outcome .quantity{font-size:18px}
+.quantity strong{font-size:24px;font-weight:600}
+.quantity-grid{gap:24px}
+.quantity-grid strong{font-size:36px;font-weight:600}
+.quantity-grid>div>span{font-size:16px}
+.qualitative strong{font-weight:600}
+.review-body{max-width:1000px}
+.review-lead{font-size:26px;line-height:1.8;max-width:1000px}
+.finding p,.suggestions p,.setting-row p,.setting-row details,.review-body>details,.detail-inner{font-size:18px;line-height:1.9}
+.finding p.small{font-size:15px}
+.review-body h3{color:var(--ink);font-weight:600}
+.finding{gap:20px}
+.suggestions{padding:28px}
+table{font-size:16px}
+th{font-weight:600}
+.composer-footer{flex-wrap:wrap;gap:14px}
+.composer-footer .small{max-width:none}
+.running-ribbon,.running-ribbon a,.running-ribbon strong{font-size:16px}
+@media(max-width:760px){
+ :root{font-size:17px;line-height:1.8}
+ .main-content{padding:26px 20px 0}
+ .site-header{padding:0 20px}
+ .brand{font-size:20px}
+ .header-edition{font-size:13px}
+ .page-heading h1{font-size:32px}
+ .page-heading p{font-size:17px}
+ h2,.review-section h2,.setting-row h2{font-size:24px}
+ .start-state h2{font-size:26px}
+ h3,.history-content h3,.setting-row h3,.review-body h3,.review-body>h3{font-size:19px}
+ h4,.finding h4,.suggestions h4{font-size:18px}
+ .main-nav a{font-size:14px;font-weight:600;min-height:58px}
+ button,.button,.text-button,.btn,.activity-options button,.local-data button,.local-data label.btn,.session-outputs .text-button{font-size:16px}
+ input,select,textarea,.composer textarea,.local-data__actions label input{font-size:17px}
+ .activity-options button{padding:12px 8px}
+ small,.small,.overline,.as-of,.scope-note,.context-notes,.site-footer,.item-type,.output-list__time,.finding-number,.composer-footer .small,.setting-row p.small,.finding p.small{font-size:14px}
+ .date-heading{flex-wrap:wrap;gap:4px 16px}
+ .date-heading h2{font-size:18px}
+ .date-heading span,.history-date,.history-date small{font-size:14px}
+ .history-record>summary{grid-template-columns:58px minmax(0,1fr) 16px;gap:12px}
+ .history-description strong{font-size:18px}
+ .history-description>span{font-size:16px}
+ .history-time{font-size:17px}
+ .history-content{padding:0 0 24px}
+ .full-raw,.outcome,.raw-summary,.qualitative,.finding p,.suggestions p,.setting-row p,.setting-row details,.review-body>details,.detail-inner{font-size:17px}
+ .outcome{flex-wrap:wrap;gap:8px 18px}
+ .outcome .quantity{font-size:17px}
+ .quantity-grid{gap:18px}
+ .quantity-grid>div{min-width:80px}
+ .quantity-grid strong{font-size:32px}
+ .quantity-grid>div>span{font-size:15px}
+ .review-lead{font-size:22px}
+ .finding{gap:12px}
+ .suggestions{padding:20px}
+ .composer-footer{flex-wrap:wrap}
+ .composer-footer .small{max-width:none;width:auto}
+ .composer-footer .button{margin-left:auto}
+ .site-footer{padding-left:20px;padding-right:20px}
+ .running-ribbon,.running-ribbon a,.running-ribbon strong{font-size:14px}
+}
+@media(max-width:350px){
+ .page-heading h1{font-size:29px}
+ .brand{font-size:18px}
+ .main-nav a{font-size:13px}
+ .composer-footer .button{width:100%}
+ .quantity-grid{gap:14px}
+ .quantity-grid>div{min-width:76px}
+}
