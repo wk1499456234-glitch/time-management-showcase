@@ -1,151 +1,23 @@
-# 開発記録（抜粋）
+# Development notes / 開発の記録
 
-最新の公開段階は末尾「2026-11-19 · モバイル比較と根拠の読みやすさ」。四画面・ブラウザー保存・保存済み実AI例を公開済みです。10月の未実装項目は当時の記録として保持し、現在の機能とは区別します。
+This record shares product lessons, not private operational instructions. Verification dates describe the stated version only.
 
-時間管理ソフトの既存の仕様書と段階ごとの記録から、目的、決定理由、確認できたこと、残っていることを抜粋しました。情報は複数の文書に分かれており、これは開発の全履歴ではありません。
+## 1. 想法与需求 / アイデアと要件
+Time and Output belong together, while a recorded quantity is not proof of mastery. The public demo lets visitors try recording without an account or AI charges. Saved fictional examples explain analysis separately from visitor data.
 
-中国語・英語の引用は日本語訳、長い項目の一覧は要約です。各部分に元のファイル名・章名と対象段階を記しています。原仕様の **V1** は計画全体を指し、現在の公開版で全機能が完成しているという意味ではありません。現在の状態は **2026-10-08 時点**の公開資料とコードに照らして区別しています。
+## 2. 设计 / 設計
+Four pages separate timer, records, review and settings. Mobile comparisons use weekly metric groups instead of squeezing a desktop table. Evidence and original AI text remain expandable. Typography, woven artwork and reduced-motion behavior are preserved.
 
-## 1. 開発目標と範囲
+## 3. 实现 / 実装
+The browser edition stores original text, timestamps and pauses in a versioned local envelope. Same-origin Web Locks and baseline checks protect concurrent tabs. The fixed five-week fixture is read-only; its three real parses and Japanese review keep provenance distinct from background records.
 
-**当初の製品計画｜翻訳抜粋**
+## 4. 修改 / 修正
+The current reliability revision distinguishes persisted success from memory-only operations and rejected actions. Failed saves retain input; retries persist the same pending branch rather than append another Output. Editing and JSON import use the same result contract. Tokyo day boundaries and Output times no longer depend on the device zone. Application and tests use the same hash router; the backup target is unique and focusable.
 
-> システムは、次の3つの問いに答える必要がある。
->
-> 1. 実際にどれだけの有効時間を使ったか。
-> 2. その時間を何に配分したか。
-> 3. その時間から、どのような Output が生まれたか。
+## 5. 环境操作与整备 / 環境の整備
+Only reviewed static files and built assets are published. Unreferenced legacy components and obsolete screenshots have been removed. Screenshot suffixes match their real formats. Dependency patches stay in compatible release families. Release and rollback instructions are in [DEPLOYMENT.md](../DEPLOYMENT.md); no backend or private network configuration is part of this repository.
 
-出典：`product.md`「1. 产品目的」。
+## 6. 代码质量保证 / 品質保証
+Tests cover fault injection, retry deduplication, original text, cross-tab conflicts, date boundaries, unit grouping and routes. Publication checks compare the candidate Git file set with the allowlist, verify hashes, and scan all text including scripts and workflows. Rejection tests exercise extra files and prohibited content. These scans supplement review; they are not a universal secret detector.
 
-対象は、学習、仕事、運動など、自分で取り組もうとした活動です。一日24時間の生活すべてを監視するものではありません。Output は、その時間に「やったこと」を残す記録です。「概念を理解した」のような文章も有効で、すべてを数値にする必要はありません。
-
-出典：`product.md`「2.1 有效时间，而不是24小时生活监控」「2.2 Time 与 Output 同时记录」の翻訳要約。
-
-## 2. 開発段階と進める順序
-
-### 作業の進め方
-
-既存の開発手順では、現状を調べる → 計画を作る → 計画を確認する → 実装する → テストする → 実際の変更差分を確認する → 最終確認、という順序を定めています。
-
-> 計画には、現在の実装状況、変更するファイルと内容、既存仕様との整合性、必要なテスト、想定するリスク、変更しない範囲を含める。
-
-出典：`workflow.md`「2. 基本原則」「4. Phase 2 — Plan」の要約。計画にない大きな変更を途中で加えないことも、同じ章に記載されています。
-
-### 当初の計画と、実際の段階記録
-
-原仕様は、活動や時間の目安を設定し、計時と Output 記録、終了時のサマリー、履歴の修正、日・週・月・四半期の集計、必要に応じた AI 分析までを一連の機能として計画しています。Output の文章を AI が整理する処理も含まれます。
-
-これは `product.md`「37. V1 Definition of Done」の**翻訳要約**です。同章は完成時に必要な機能の流れであり、この順番どおりに実装・完了したという記録ではありません。
-
-実際の段階を確認できる資料は、次のとおりです。
-
-| 段階 | 記録されている内容 | 出典 |
-| --- | --- | --- |
-| 初期の画面原型 | 計時画面の原型があり、当初は再読み込みでメモリー内の記録が失われた。 | `PROVENANCE.md` の Earlier frontend checkpoints、`LOCAL-PERSISTENCE-V0.md` 冒頭および末尾の更新手順・第1項（旧版の保存制限） |
-| ブラウザー保存 V0（2026-09-12） | 内部メモリーだけで動く原型に、ブラウザー保存・復元と JSON バックアップを追加。対象を時間管理画面に限定。 | `LOCAL-PERSISTENCE-V0.md` 冒頭、「数据与计时规则」 |
-| 独立した公開版（2026-10-01 の検証記録） | 保存 V0 のコードを基に、日本語・中国語の表示と静的サイト公開を整備し、公開 URL で操作を確認。 | `PROVENANCE.md` の Showcase changes、`VALIDATION.md`「GitHub Pages 公開検証（2026-10-01）」 |
-| 機能への移動リンク（2026-10-08 の検証記録） | 計時、今日の記録、バックアップへの移動を追加し、移動で計時や保存内容が変わらないことを確認。 | `VALIDATION.md`「機能への移動リンクの検証（2026-10-08）」 |
-
-## 3. 重要な決定と、その理由
-
-**入力を複雑にしない。** 原仕様では、毎回、種類・数量・単位・難度・品質などをすべて入力させず、自然な文章と簡単な入力手段を使う方針です。記録を残す手間を小さくするためです。現在の公開版は文章入力に対応しており、原仕様にある種類別の入力ショートカットは未実装です。
-
-出典：`product.md`「14. Output」の翻訳要約。現在の範囲は [README](../README.md)「できること・保存先」と [Output の型](../src/types/index.ts)、[入力画面](../src/components/RunningPanel.tsx)を照合。
-
-**異なる活動を、一つの効率点数にしない。**
-
-> 活動によって Output の性質が異なるため、一つの式に無理に当てはめると、見かけだけの精密さを生みやすい。
-
-出典：`product.md`「2.3 不强制使用统一的“效率分数”」の翻訳抜粋。時間配分や活動ごとの内容を分けて見る方針です。公開画面の8時間も、客観的な効率点数ではなく固定の参考値です。
-
-**元の文章を先に保存し、AI の結果と分ける。**
-
-> 保存順序は、元の Output を保存 → 記録を確定 → 後から解析、でなければならない。解析に失敗しても Output を失ってはならない。
-
-出典：`tech.md`「39. Parser Failure」の翻訳抜粋。`product.md`「15. raw_text」では、AI による書き換えや削除を禁じています。これは**将来の AI 解析を含む設計上の決定**です。公開版に AI 解析があるという意味ではありません。
-
-**計算は通常のプログラム、解釈は AI が担当する。** 時間、休憩、活動別の集計などの数字はプログラムが計算し、AI が数字を変更してはならないと定めています。AI の指摘には記録の裏付けが必要で、材料が足りなければ「判断できない」とする方針です。
-
-出典：`product.md`「27. AI 不负责确定性计算」「28. AI Analysis Evidence Rule」、`tech.md`「36. Statistics Service」の翻訳要約。AI に関する部分は未実装の計画です。
-
-## 4. 完了した内容と検証記録
-
-以下は**各段階で残された結果の抜粋**です。今回の文書整理で、これらの操作試験を新たに実行したという意味ではありません。公開版の検証記録には AI エージェントが実行した試験が含まれ、作者本人がすべて手操作したとはしていません。
-
-### ブラウザー保存 V0：2026-09-12
-
-- 現在の活動、完了記録、Output、開始・終了時刻、休憩区間を保存。再読み込みで復元する仕組みを実装。
-- 計時中に閉じた場合は時間が進み、一時停止して閉じた場合は有効時間が増えないことを確認。これは期待する動作の検証であり、休憩時間を誤加算した事故の記録ではありません。
-- 同じバックアップの読み込みで記録が増殖しないこと、保存容量不足時に入力をメモリーに残すことなどを検証。既存の12件のテスト、型検査、ビルドは成功と記録。
-- 開発中、JSON の項目の並び順だけで同じ記録を「競合」と扱う問題を修正。また、組み込みブラウザーで使えない入力ダイアログを、ページ内の編集・確認に変更。
-
-出典：`LOCAL-PERSISTENCE-V0.md`「数据与计时规则」「数据安全」「定向验证（2026-09-12 实际运行）」の翻訳要約。当時も履歴・分析・設定は仮の画面で、履歴閲覧の拡張はこの段階に含めていません。
-
-### 公開版：2026-10-01、2026-10-08
-
-- 10月1日の記録では、型検査・14件の回帰テスト・ビルド・公開内容チェックが成功。公開 HTTPS 上でも、開始、Output 追加、一時停止、再読み込み、再開、終了と記録の復元を確認。
-- 公開前に見つかった開発用パッケージの既知の脆弱性を修正。当日の依存関係監査は0件。ただし、これは当時の既知情報との照合であり、安全性全体の保証ではありません。
-- 10月8日の移動リンクの記録では、3つの入口の直接アクセス・再読み込み、計時中と一時停止中の移動、Output と保存内容の保持を確認。日本語・中国語、デスクトップ幅とスマートフォン相当の幅で検証。
-
-出典：[VALIDATION.md](VALIDATION.md)「依存パッケージ修正後の再検証（2026-10-01）」「GitHub Pages 公開検証（2026-10-01）」「機能への移動リンクの検証（2026-10-08）」の要約。
-
-スマートフォン相当の幅での確認は、実機での確認とは異なります。公開版の実機スマートフォン、Safari、Firefox、および製品画面を2タブ同時に手操作する試験は未実施です。以前の保存 V0 にある2タブ試験と、公開版で未実施の試験を混同しません。
-
-## 5. 未完成の内容と、継続する際の項目
-
-### 現在の公開版の境界
-
-固定の4活動から1つを計時し、Output を文章で残し、今日の記録と集計を見られます。保存先は訪問者それぞれのブラウザーです。JSON でバックアップできますが、サイトデータを消すと記録も失われます。サーバーへの記録保存、アカウント、自動の端末間同期はありません。
-
-履歴・分析・設定の画面、活動や目安時間の変更、時間の手動修正は未完成です。AI による Output の分類・数量の抽出や、AI による振り返り・提案も未実装です。
-
-出典：[README.md](../README.md)「できること・保存先」「制限と詳しい資料」、[PROVENANCE.md](../PROVENANCE.md) の公開版の範囲。現状は [App.tsx](../src/App.tsx) の仮画面表示と [Output の型](../src/types/index.ts)も照合。
-
-### 原仕様に残っている計画
-
-| 項目 | 原仕様が定めた内容（翻訳要約・公開版では未実装） | 出典 |
-| --- | --- | --- |
-| Output のデータ化 | 入力文を残したまま、種類・数量などを集計しやすい形に整理。新しい種類を AI が提案しても、正式な追加はユーザーの確認が必要。 | `product.md`「15. raw_text」「16. OutputEntry 与 Structured Output」「26. AI 在产品中的职责」 |
-| 週・月・四半期の振り返り | 週は日をまたぐ傾向と継続性、月は時間配分や投入と Output の変化、四半期は長めの傾向とユーザーが決めた重点との関係を見る。 | `product.md`「23. Weekly View」「24. Monthly View」「25. Quarterly View」 |
-| 必要なときの AI 提案 | プログラムが集計した記録を基に、根拠のある解釈と少数の提案を出す。週は最大2件、月と次の四半期に向けた判断は最大3件。ユーザーの人生目標を AI が決めない。 | `product.md`「23〜25」「26. AI 在产品中的职责」「28. AI Analysis Evidence Rule」 |
-| 分析結果の再利用 | ページを開くたびに AI を呼ばず、既存の結果を再利用。元の記録を修正したら古い結果として扱い、必要になったときに作り直す。 | `product.md`「19. Historical Correction」「30. AI Analysis Cache」 |
-
-年単位の振り返りは、原仕様の `product.md`「36. V1 明确不做」では V1 の対象外です。週・月・四半期と同じ確定済み機能として扱いません。
-
-公開版の README では、履歴閲覧と保存方法の拡張を今後の候補に挙げています。ただし、参照した時間管理の資料だけでは、これらと AI 機能の**次に着手する具体的な項目・実装順序は確定していません**。原仕様の機能一覧を、そのまま公開版の実装済み一覧や確定した工程表にはしません。
-
-継続時には、`workflow.md`「4. Phase 2 — Plan」の項目に沿って、現在の実装との差、変更する範囲、必要な検証を計画に明記する手順です。未実行の試験を成功と書かず、実際の変更を確認するという原則も残しています。
-
-出典：`workflow.md`「7. Phase 5 — Test」「9. Phase 6 — Git Diff」。元の仕様書と段階記録は変更せず、本書では時間管理に関係する部分だけを抜粋しています。
-
-## 2026-11-18 — 保存済み AI 結果を備えた独立展示版
-
-以下は新しい段階の記録です。上記の2026-10-08時点の未実装事項を、当時から完成していたという意味には変更しません。
-
-- 本機製品の四ページ構成と必要な表示部品だけを選択して取り込みました。公開版の既存のブラウザー保存・JSON復元・原文保全ロジックは維持しています。
-- 中立な架空データを製品モデルへ適合させ、30活動の開始・終了・一時停止・原文を正式な検証とトランザクション経由で保存。各週180分をプログラムで確認しました。
-- 背景27件と、実AI解析3件を区別。解析では実際の30語、10問、6ページと数量なしの概念整理を抽出しました。人は成果種類のみ確認し、原文・内容・数量・単位は変更していません。
-- 対象週の日本語回顧を製品画面の操作から1回生成。モデルは主に前週を比較しました。4週平均はプログラムの比較表として分け、AIが述べたように書き換えていません。
-- 数値は記録と一致。時間の技術フィールド名が正文に現れたため、既存の表示処理で利用者向け名称に置換しました。原応答は非公開の検証資料に保持。目標・難易度・成績がない制約はプログラム側でも明示し、復習量を増やす提案を必須目標にはしません。
-- 多週の正しい平均・差分が数値検証で拒否されうる問題を隔離環境で修正し、異なる数量・単位による定向テストで検証。日常固定プログラムは変更していません。
-- 完全SQLiteバックアップを新しい場所に復元し、30原文・確認済み成果・保存回顧の一致を検証。復元先は別のデータ世代となるため、元の分析の過期判定は維持されます。
-- 公開内容は白名簿で抽出した架空原文、確認結果、実解析、統計、表示済みモデル本文のみ。訪問者の記録とは別の読み取り専用データです。新規推論接続を持ちません。
-
-実行済み検証と未確認の環境は [VALIDATION.md](VALIDATION.md) を参照してください。
-
-## 2026-11-19 · TimeWeave static UI
-
-- Adapted the confirmed four-page TimeWeave layout to the existing browser persistence engine. Visitors can time, pause/resume/end, save and edit raw Output, read records and back up JSON; no server or paid generation controls are exposed.
-- Preserved the browser record namespace, draft key, original whitespace, IME save guard, transactional import and duplicate/conflict rules. A single-line legacy editor was changed to a textarea to retain line breaks.
-- Kept the previously published real-AI fixture unchanged. Added the current seven-day chart from timestamps and pauses, a clear sample/trial switch, and direct evidence links to the read-only sample records.
-- Build and 17 existing persistence/fixture/route checks pass. Local browser verified timer actions, paused draft navigation, raw save/edit/reload, and 390px review layout. Formal Pages verification is recorded separately after deployment. Actual iPhone/Safari testing remains pending.
-- Public artifacts have no private server connection. Pages build validation and the manifest/hash checks run on `main` pushes; the preceding public commit remains the rollback reference.
-- Functional release `e581c0b` deployed successfully. Formal HTTPS checks cover navigation, saved example evidence, timer/raw edits, pause/reload, JSON export/import without duplicates, and 1280/390/320px layouts. Existing trial storage remains separate from the unchanged fictional fixture. Detailed evidence and limitations are in the latest section of VALIDATION.md; browser viewport checks do not constitute physical-phone acceptance.
-
-
-## 2026-11-19 · モバイル比較と根拠の読みやすさ
-
-五列の表が小画面で数字や単位を分断したため、モバイルのみ日付と二列指標の週別表示へ変更しました。広い画面は表を維持します。数量比較は保存された統計から算出し、前週・対象週・前4週平均を明示。AI原文を編集する代わりに、簡潔な比較と保存文の展開を分けました。説明と根拠は開閉でき、固定例と訪問者の試用記録の境界は維持しています。
-
-20件のテストと型/build、日中320/390/1280pxの展開操作を確認。実機iPhone/Safariとソフトキーボードは再確認待ちです。詳しい実行範囲はVALIDATION.mdに記載しています。
+Historical milestones: browser persistence and whitespace/IME protection preceded the four-page interface; mobile evidence and comparison improvements were accepted before this revision. They are historical evidence, not a claim that every earlier device test was repeated. See [current validation](VALIDATION.md).

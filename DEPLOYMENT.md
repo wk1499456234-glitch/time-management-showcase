@@ -1,19 +1,25 @@
 # Static release and recovery
 
-This repository publishes only the standalone TimeWeave browser demo. Build `dist/` using the existing lockfile and serve it on the existing GitHub Pages repository subpath. There is no application server, login service or AI API in this edition.
+This repository builds the independent TimeWeave browser demo for its existing GitHub Pages subpath. Only `dist/` is deployed. There is no server, login or AI API in this edition.
 
-## Release checks
+## Release identity
 
-1. Run `npm ci`, `npm run typecheck`, `npm test`, `npm run build`.
-2. Review changed source and documentation. Run `node scripts/manifest.mjs` to update the public allowlist and hashes, then `npm run check:public`. The generated list is not a substitute for reviewing files.
-3. Commit only the reviewed allowlist to the existing `main`. The workflow now runs on pushes to `main`, with manual dispatch retained. It verifies the build and uploads only `dist/`.
-4. Check the exact Actions run and deployed JS/CSS names plus HTML release marker `20261119-timeweave-static-v2`. An old page returning HTTP 200 is not release evidence.
-5. On the actual HTTPS site, check the four hash routes, history navigation, a fictional timer/Output trial, reload, JSON backup and saved sample week. Browser reads must not contact an API. The built CSP uses `connect-src 'none'`.
+- This revision's HTML marker: `20261119-public-reliability-v1`.
+- Previous accepted public commit: `df86243777b2694388b440baf7bee54e036f5f00`, marker `20261119-copy-polish-v1`, [successful workflow 44520541381](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/44520541381).
+- The release commit is the `head_sha` of the successful **Deploy time management showcase** run for this marker. Match that SHA to the checkout and its `index.html`; do not substitute a documentation-only commit or an old HTTP 200 response. The workflow summary records SHA and marker together.
 
-## Recovery
+## Publish and verify
 
-The release immediately before this update is `3aba747` on the existing public `main`. Revert the reviewed release with a new commit and let the same workflow deploy it; do not rewrite Git history. Preserve browser trial records and drafts. The storage namespace and JSON format remain unchanged. This operation does not change any separate full-product deployment.
+1. Review source and documentation, including removals. Run `npm ci`, `npm test`, `npm run typecheck`, `npm run build`, `npm audit` and `npm audit --omit=dev`.
+2. Refresh `PUBLIC-FILES.txt` and `CHECKPOINT.sha256` using `node scripts/manifest.mjs`. Review the generated list before staging. Stage only reviewed files, then run `npm run check:public`: it requires exact equality with tracked and non-ignored candidate files, scans all text and verifies hashes.
+3. Use the authenticated account's verified GitHub noreply email in this repository only. Commit and normally push `main`; never force push. A push triggers `.github/workflows/pages.yml`.
+4. Verify that exact run succeeds, then compare the official HTML release marker and downloaded JS/CSS bytes to the accepted `dist/`. Confirm the four hash routes, old `#backup` and nested `#/settings/backup`, history navigation and refresh on the Pages subpath.
+5. Use disposable fictional browser records to check save, edit, retry and JSON restore. Read the fixed example week separately. Public runtime CSP uses `connect-src 'none'`; no API requests should occur.
 
-## 保存領域の注意 / 保存域注意
+## Recovery and local records
 
-Browser storage belongs to an origin (protocol + host + port), **not to a URL path**. Different sites on the same account's Pages origin can access the same origin storage. This showcase uses its own key to avoid accidental naming collisions, but that is not a security boundary. Use a dedicated origin if isolation from other applications on that origin is required. A change of domain requires users to export from the old address and import at the new address.
+Before changing domain or clearing site data, export JSON from Settings. Keep the original file. Import previews record counts and merges identical records once; conflicting IDs are rejected. A failed write is not a successful restore: retain the page and retry or export the in-memory branch. Browser keys and JSON schema are unchanged by this release.
+
+To revert this release, make a new revert commit and deploy it through the same workflow, using the previous accepted commit above as the reference. Preserve visitor storage and drafts; do not reset the remote or overwrite user data. The preceding version has the known save-failure reporting issue, so prefer a forward repair if that path is needed.
+
+Browser storage belongs to an origin, not a URL path. A storage namespace prevents accidental key collisions but does not isolate applications sharing that origin. Moving origins requires export from the old origin and import at the new one.

@@ -985,16 +985,5 @@
       },
       "originalRetained": true
     }
-  },
-  "usage": {
-    "input": 4640,
-    "cachedInput": 0,
-    "output": 1230,
-    "reasoningSubset": 406,
-    "estimatedUsd": 0.009015,
-    "calls": {
-      "parse": 3,
-      "review": 1
-    }
   }
 }

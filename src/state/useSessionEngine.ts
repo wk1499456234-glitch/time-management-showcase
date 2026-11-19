@@ -1,5 +1,5 @@
-import { useEffect, useState, useSyncExternalStore } from 'react'
-import { LocalSessionStore } from './localSessionStore'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { LocalSessionStore, type SaveResult } from './localSessionStore'
 import { activeInDay, durations, todayBounds, type Action } from './sessionData'
 
 let singleton: LocalSessionStore | undefined
@@ -18,6 +18,7 @@ export function useSessionEngine() {
   const [error, setError] = useState('')
   const [lastId, setLastId] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
+  const executing = useRef(false)
   useEffect(() => {
     const refresh = () => { setNow(Date.now()); store.checkExternal() }
     const tick = window.setInterval(() => setNow(Date.now()), 1000)
@@ -39,11 +40,12 @@ export function useSessionEngine() {
     window.addEventListener('beforeunload', warn)
     return () => window.removeEventListener('beforeunload', warn)
   }, [snapshot.unsaved])
-  const execute = async (work: () => Promise<unknown>) => {
-    setPending(true); setError('')
-    try { await work(); setNow(Date.now()); return true }
+  const execute = async (work: () => Promise<SaveResult>) => {
+    if (executing.current) return false
+    executing.current = true; setPending(true); setError('')
+    try { const result = await work(); setNow(Date.now()); return result.status === 'saved' }
     catch (e) { setError(e instanceof Error ? e.message : 'errors.actionFailed'); return false }
-    finally { setPending(false) }
+    finally { executing.current = false; setPending(false) }
   }
   const dispatch = (action: Action) => execute(() => store.dispatch(action))
   const current = snapshot.data.current

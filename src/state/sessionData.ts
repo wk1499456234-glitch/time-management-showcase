@@ -30,9 +30,10 @@ export function durations(run: { startAt: number; pauseIntervals: PauseInterval[
   return { elapsedMs, pauseMs, activeMs: Math.max(0, elapsedMs - pauseMs) }
 }
 export function todayBounds(now: number): [number, number] {
-  const start = new Date(now); start.setHours(0, 0, 0, 0)
-  const end = new Date(start); end.setDate(end.getDate() + 1)
-  return [start.getTime(), end.getTime()]
+  // Asia/Tokyo has no daylight-saving change in the supported record period.
+  const offset = 9 * 3600000, day = 86400000
+  const start = Math.floor((now + offset) / day) * day - offset
+  return [start, start + day]
 }
 export function activeInDay(run: { startAt: number; pauseIntervals: PauseInterval[] }, endAt: number, now: number) {
   const [dayStart, dayEnd] = todayBounds(now)

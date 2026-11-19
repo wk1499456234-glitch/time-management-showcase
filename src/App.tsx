@@ -12,18 +12,14 @@ import {clockTime,dateTime,tokyoDay} from './ui/data'
 import {Icon,Reveal} from './ui/motion'
 import {Records as SampleRecords} from './ui/DemoPages'
 
+import {pages as routes,route as parseRoute,backupRoute,type Page as Route} from './ui/routes'
 import {brand} from './ui/brand'
 import {WeaveMark} from './ui/WeaveMark'
 import {TodayOverview} from './ui/TodayOverview'
 
 
 
-type Route='timer'|'records'|'review'|'settings'
-const routes:Route[]=['timer','records','review','settings']
-const routeFromHash=():Route=>{
-  const path=location.hash.replace(/^#\/?/,'').split('/')[0]
-  return path==='backup'?'settings':routes.includes(path as Route)?path as Route:'timer'
-}
+const routeFromHash=():Route=>parseRoute(location.hash)
 function AppShell(){
   const DRAFT='time-management.showcase.output-draft'
   const engine=useSessionEngine(),{locale,t}=useLocale(),l={...words[locale],brand:brand[locale],edition:locale==='ja-JP'?'公開デモ':'公开演示'}
@@ -39,7 +35,7 @@ function AppShell(){
   useLayoutEffect(()=>{
     const element=main.current;if(!element)return
     window.scrollTo({top:0,behavior:'instant'});if(!first.current)element.focus({preventScroll:true});first.current=false
-    if(location.hash==='#backup'||location.hash==='#/settings/backup'){
+    if(backupRoute(location.hash)){
       const backup=element.querySelector<HTMLElement>('#backup'),details=backup?.querySelector('details');if(details)details.open=true
       backup?.focus({preventScroll:true});backup?.scrollIntoView({block:'start'})
     }
@@ -51,11 +47,11 @@ function AppShell(){
     const cancel=()=>{if(reduced.matches)animation?.cancel()};reduced.addEventListener('change',cancel)
     return()=>{animation?.cancel();reduced.removeEventListener('change',cancel)}
   },[route,visit])
-  async function retrySave(){
-    let text:string|undefined
-    try{const command=JSON.parse(engine.recoveryBackup()??'{}');if(command.action==='output')text=command.text}catch{/* Keep the recovery request for Settings. */}
-    if(await engine.retry())setDraft(current=>current===text?'':current)
-  }
+  useEffect(()=>{
+    const saved=engine.savedOutput
+    if(saved)setDraft(current=>current===saved.text?'':current)
+  },[engine.savedOutput])
+  const retrySave=()=>engine.retry()
   const activeName=t(ACTIVITIES.find(a=>a.id===engine.currentActivityId)?.nameKey??'')
   return <div className={keyboard?'product keyboard-open':'product'}>
     <a className="skip-link" href="#main" onClick={e=>{e.preventDefault();main.current?.focus()}}>{l.skip}</a>

@@ -23,7 +23,7 @@ export function LocalDataPanel({ engine }: { engine: SessionEngine }) {
       <div className="local-data__actions">
         <button className="btn btn--secondary" onClick={() => download(engine.exportData(), `time-management-backup-${new Date().toISOString().replace(/[:.]/g,'-')}.json`)}>{t('data.export')}</button>
         <label className="btn btn--secondary">{t('data.import')}
-          <input aria-label={t('data.importLabel')} type="file" accept=".json,application/json" disabled={engine.conflict || engine.pending} onChange={async event => {
+          <input aria-label={t('data.importLabel')} type="file" accept=".json,application/json" disabled={engine.conflict || engine.pending || engine.unsaved} onChange={async event => {
             const file = event.target.files?.[0]; event.target.value = ''
             if (!file) return
             setMessage(''); setCandidate(null)
@@ -34,7 +34,7 @@ export function LocalDataPanel({ engine }: { engine: SessionEngine }) {
             } catch (e) { setMessage(e instanceof Error && e.message.startsWith('errors.') ? e.message : 'errors.invalid') }
           }} />
         </label>
-        {engine.unsaved && !engine.conflict && <button className="btn btn--secondary" onClick={engine.retry}>{t('data.retry')}</button>}
+        {engine.unsaved && !engine.conflict && <button className="btn btn--secondary" disabled={engine.pending} onClick={engine.retry}>{t('data.retry')}</button>}
         {(engine.conflict || engine.warning) && <button className="btn btn--secondary" onClick={() => setConfirmReload(true)}>{t('data.reload')}</button>}
         {engine.rawBackup() !== null && engine.warning && <button className="btn btn--secondary" onClick={() => download(engine.rawBackup()!, 'time-management-raw-backup.json')}>{t('data.raw')}</button>}
       </div>

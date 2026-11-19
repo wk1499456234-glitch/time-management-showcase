@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import data from '../src/data/ai-demo.json'
-import {route} from '../src/ui/routes'
+import {route,backupRoute} from '../src/ui/routes'
 import {LocalSessionStore,STORAGE_KEY} from '../src/state/localSessionStore'
 test('five-week facts recompute from raw timestamps, pauses and separate typed units',()=>{
  assert.equal(data.records.length,30);assert.equal(data.records.filter(r=>r.source==='real-ai-human-confirmed').length,3)
@@ -21,6 +21,12 @@ test('five-week facts recompute from raw timestamps, pauses and separate typed u
  assert.ok(!JSON.stringify(data.review.result).includes('activeTimeHHMMSS'))
 })
 test('four-page routes and legacy fragments',()=>{for(const page of ['timer','records','review','settings']){assert.equal(route('#/'+page),page);assert.equal(route('#'+page),page)}assert.equal(route('#backup'),'settings')})
+test('App route implementation retains nested routes, backup aliases and unknown fallback',()=>{
+ for(const hash of ['#backup','#/backup','#settings/backup','#/settings/backup','#/settings/backup/details']){assert.equal(route(hash),'settings');assert.equal(backupRoute(hash),true)}
+ for(const p of ['timer','records','review','settings'])assert.equal(route('#/'+p+'/details'),p)
+ for(const hash of ['','#unknown','#/unrecognized/details'])assert.equal(route(hash),'timer')
+ assert.equal(backupRoute('#/settings/backup-other'),false)
+})
 test('existing browser records preserved; fixed samples never enter visitor persistence',async()=>{
  const memory=new Map<string,string>();const storage={getItem:(k:string)=>memory.get(k)??null,setItem:(k:string,v:string)=>{memory.set(k,v)}}
  let n=1000;const lock=async(_name:string,work:()=>void)=>work();const store=new LocalSessionStore(storage,lock,()=>n,()=>`test-${n}`)

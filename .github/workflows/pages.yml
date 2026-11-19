@@ -22,6 +22,10 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run check:public
+      - name: Record release identity
+        run: |
+          echo "Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          grep 'name="release"' dist/index.html >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

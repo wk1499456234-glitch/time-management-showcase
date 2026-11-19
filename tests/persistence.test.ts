@@ -45,12 +45,12 @@ test('display ticks are read only; Output and edits survive reload and round tri
   await target.import(exported);assert.equal(target.getSnapshot().data.sessions.length,1)
 })
 test('midnight splits effective time including a pause spanning midnight; complete facts survive', () => {
-  const midnight = new Date(2026,8,12).getTime()
+  const midnight = Date.parse('2026-09-12T00:00:00+09:00')
   const run={startAt:midnight-3_600_000,pauseIntervals:[{start:midnight-600_000,end:midnight+600_000}]}
   assert.equal(activeInDay(run,midnight+3_600_000,midnight+1000),3_000_000)
   assert.equal(activeInDay(run,midnight+3_600_000,midnight-1000),3_000_000)
   assert.equal(durations(run,midnight+3_600_000).activeMs,6_000_000)
-  const [lo,hi]=todayBounds(midnight+1000);assert.equal(lo,midnight);assert.equal(new Date(hi).getDate(),13)
+  const [lo,hi]=todayBounds(midnight+1000);assert.equal(lo,midnight);assert.equal(hi,Date.parse('2026-09-13T00:00:00+09:00'))
 })
 test('two initially current tabs competing for start cannot overwrite each other', async () => {
   const f=fixture(),a=f.make(),b=f.make()

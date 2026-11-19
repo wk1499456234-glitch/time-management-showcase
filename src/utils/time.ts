@@ -14,9 +14,7 @@ export function msToHM(ms: number): { h: number; m: number } {
   return { h: Math.floor(totalMinutes / 60), m: totalMinutes % 60 }
 }
 
-/** Formats a timestamp as the local wall-clock time in strict 24-hour HH:mm (no locale dependency). */
+/** Formats a timestamp as the Asia/Tokyo wall-clock time in strict 24-hour HH:mm (no locale dependency). */
 export function formatLocalHM(timestamp: number): string {
-  const date = new Date(timestamp)
-  const pad = (n: number) => String(n).padStart(2, '0')
-  return `${pad(date.getHours())}:${pad(date.getMinutes())}`
+  return new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: false }).format(timestamp)
 }
