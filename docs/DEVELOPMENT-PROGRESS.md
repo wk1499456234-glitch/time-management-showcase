@@ -1,5 +1,7 @@
 # 開発記録（抜粋）
 
+最新の公開段階は末尾「2026-11-19 · TimeWeave static UI」。四画面・ブラウザー保存・保存済み実AI例を公開済みです。10月の未実装項目は当時の記録として保持し、現在の機能とは区別します。
+
 時間管理ソフトの既存の仕様書と段階ごとの記録から、目的、決定理由、確認できたこと、残っていることを抜粋しました。情報は複数の文書に分かれており、これは開発の全履歴ではありません。
 
 中国語・英語の引用は日本語訳、長い項目の一覧は要約です。各部分に元のファイル名・章名と対象段階を記しています。原仕様の **V1** は計画全体を指し、現在の公開版で全機能が完成しているという意味ではありません。現在の状態は **2026-10-08 時点**の公開資料とコードに照らして区別しています。
@@ -139,3 +141,4 @@
 - Kept the previously published real-AI fixture unchanged. Added the current seven-day chart from timestamps and pauses, a clear sample/trial switch, and direct evidence links to the read-only sample records.
 - Build and 17 existing persistence/fixture/route checks pass. Local browser verified timer actions, paused draft navigation, raw save/edit/reload, and 390px review layout. Formal Pages verification is recorded separately after deployment. Actual iPhone/Safari testing remains pending.
 - Public artifacts have no private server connection. Pages build validation and the manifest/hash checks run on `main` pushes; the preceding public commit remains the rollback reference.
+- Functional release `e581c0b` deployed successfully. Formal HTTPS checks cover navigation, saved example evidence, timer/raw edits, pause/reload, JSON export/import without duplicates, and 1280/390/320px layouts. Existing trial storage remains separate from the unchanged fictional fixture. Detailed evidence and limitations are in the latest section of VALIDATION.md; browser viewport checks do not constitute physical-phone acceptance.

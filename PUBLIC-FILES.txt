@@ -12,6 +12,8 @@ docs/VALIDATION.md
 docs/screenshots/desktop.png
 docs/screenshots/mobile-overview.png
 docs/screenshots/mobile.png
+docs/screenshots/timeweave-review-390.jpg
+docs/screenshots/timeweave-review-desktop.jpg
 index.html
 package-lock.json
 package.json
