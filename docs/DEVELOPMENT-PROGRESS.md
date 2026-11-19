@@ -1,23 +1,76 @@
-# Development notes / 開発の記録
+# AIを活用した開発の経験と変更記録
 
-This record shares product lessons, not private operational instructions. Verification dates describe the stated version only.
+TimeWeaveは、作者が利用場面と優先順位を決め、AIとの相談で要求を整理し、Codexで実装・検証・環境操作を進めてきた。本書はその経験と現在地を記録する。使い方は[README](../README.md)、再開手順は[開発手順・作業再開ガイド](DEVELOPMENT-WORKFLOW.md)に分ける。
 
-## 1. 想法与需求 / アイデアと要件
-Time and Output belong together, while a recorded quantity is not proof of mastery. The public demo lets visitors try recording without an account or AI charges. Saved fictional examples explain analysis separately from visitor data.
+## 現在地
 
-## 2. 设计 / 設計
-Four pages separate timer, records, review and settings. Mobile comparisons use weekly metric groups instead of squeezing a desktop table. Evidence and original AI text remain expandable. Typography, woven artwork and reduced-motion behavior are preserved.
+- 基準となる機能公開版は`a411447`。保存失敗の扱い、東京時間、公開範囲チェックなどの修正が含まれる。
+- 今回の更新識別子は`20261120-docs-ja-v1`。日文・中文README、要件・記録定義・設計・開発手順、公開向けの経験・検証・出典を整理する。自然言語の注釈も日本語に統一する。
+- UI、動作、保存形式、保存キー、固定例、依存関係は保持する。新規の有料AI呼び出しは行わない。公開版とフル版の範囲を明示する。
+- 今回の実行結果は[検証記録](VALIDATION.md)に、正式公開の照合方法は[公開手順](../DEPLOYMENT.md)に記す。文書の整備を未実装機能の完成とは扱わない。
 
-## 3. 实现 / 実装
-The browser edition stores original text, timestamps and pauses in a versioned local envelope. Same-origin Web Locks and baseline checks protect concurrent tabs. The fixed five-week fixture is read-only; its three real parses and Japanese review keep provenance distinct from background records.
+## 1. アイデア出し・要件定義
 
-## 4. 修改 / 修正
-The current reliability revision distinguishes persisted success from memory-only operations and rejected actions. Failed saves retain input; retries persist the same pending branch rather than append another Output. Editing and JSON import use the same result contract. Tokyo day boundaries and Output times no longer depend on the device zone. Application and tests use the same hash router; the backup target is unique and focusable.
+**実際に行ったこと。** 作者自身の「投入した時間と実際の成果を一緒に残したい」という場面を出発点に、AIと必要な操作や優先順位を整理した。学習、開発、運動などを一つの効率点に押し込めず、それぞれの量と単位を保つ方針を作者が選んだ。
 
-## 5. 环境操作与整备 / 環境の整備
-Only reviewed static files and built assets are published. Unreferenced legacy components and obsolete screenshots have been removed. Screenshot suffixes match their real formats. Dependency patches stay in compatible release families. Release and rollback instructions are in [DEPLOYMENT.md](../DEPLOYMENT.md); no backend or private network configuration is part of this repository.
+**問題と改善。** 記録の「20語を復習した」を「20語を習得した」と扱うと、実際には測っていない能力まで評価してしまう。計画量や未完了量も、完成した量とは違う。原文を先に保存し、整理結果、数値集計、AI説明の責任を分けた。数量のない理解のメモも残せるようにした。
 
-## 6. 代码质量保证 / 品質保証
-Tests cover fault injection, retry deduplication, original text, cross-tab conflicts, date boundaries, unit grouping and routes. Publication checks compare the candidate Git file set with the allowlist, verify hashes, and scan all text including scripts and workflows. Rejection tests exercise extra files and prohibited content. These scans supplement review; they are not a universal secret detector.
+**得られたこと。** AIとの相談は要求の明確化に役立つが、何を製品の範囲にするかは作者が決める。指標の意味を先に合意すると、後の実装と受け入れ確認が具体的になる。
 
-Historical milestones: browser persistence and whitespace/IME protection preceded the four-page interface; mobile evidence and comparison improvements were accepted before this revision. They are historical evidence, not a claim that every earlier device test was repeated. See [current validation](VALIDATION.md).
+## 2. 設計
+
+**実際に行ったこと。** まず画面イメージで方向を確認し、タイマー、記録、AI振り返り、設定の四ページへ整理した。字体、余白、主操作と補助操作、スマートフォンでの並び、開いた後の内容を順に調整した。
+
+**問題と改善。** イメージ画像では整っていても、実際の画面には余分な説明や空白が残り、操作の位置が分かりにくいことがあった。そこで「活動選択→時間→操作→原文入力」の順序、実データからのグラフ、本文の可読性、確認ボタンの位置などを検証できる条件に変えた。原文、整理成果、統計、AI説明の見せ方も分けた。
+
+**得られたこと。** 画像は方向の共有に使い、最終確認は同じ画面幅・同じ状態の操作できる画面で行う。首画面だけでなく、長文・失敗・展開後・編集中まで条件に含める必要がある。
+
+## 3. 実装
+
+**実際に行ったこと。** 作者が要件と画面の方向を定めて結果を確認し、相談用のAIが計画や依頼内容を整理し、Codexがコード変更、テスト、環境操作を実行した。依頼を目標・変更範囲・保持条件・受け入れ方法に分け、決定理由と実際の変更を記録した。
+
+**問題と改善。** チャットだけでは、別の窓や新しい会話に移ったときに、古い計画と実装済みの状態が混ざりやすい。そこで、**AIと合意した開発手順を専用のMarkdownに残し、会話が中断・切り替えになってもファイルを読んで作業を再開する**方法を採った。
+
+具体的には、[開発手順・作業再開ガイド](DEVELOPMENT-WORKFLOW.md)に文書の担当範囲と再開用の依頼文を置き、各回の決定・結果・残りを本記録と検証記録へ戻す。再開時は資料を読んだ後、ブランチ、未コミット変更、最近のコミット、実際の配信を照合する。今回、その方法を公開リポジトリ用の一つの入口として整理した。
+
+**得られたこと。** 記録はAIの完全な記憶の代わりではなく、作者と実行側が同じ現状を確認する材料である。ファイルを読むだけで権限が増えるわけではない。
+
+## 4. 修正
+
+**実際に行ったこと。** 作者の実際のスマートフォン操作で、編集入口の見つけにくさ、`study_progress`の露出、「20語を復習し」のように途中で切れた成果名、比較表の文字ごとの折り返しが見つかった。スクリーンショットに加え、操作経路、現象、期待する状態を示して修正を依頼した。
+
+**問題と改善。** 成果名は元のAI解析に含まれており、画面の文字切り取りが原因ではなかった。引用と表示名を分け、明確な学習動作だけを自然な独立名で表示し、人が修正した名称は保持した。未知の内容を一律に語尾削除で処理しなかった。AIの提案分類を正式分類と混同せず、分かる名称・選択肢と明示確認を使った。
+
+フル版では待確認の成果から一回の操作で確認へ進め、内容・数量・単位・分類を先に、原文と根拠を必要に応じて開く構成にした。保存失敗時には入力を残す。公開版にも適用する比較表示は、デスクトップの表とスマートフォンの週別指標に分け、数字と単位を一組にした。保存済みAI本文を残しつつ、簡潔な数量比較を構造化データから表示した。
+
+**得られたこと。** 「読みにくい」だけでなく、どこから何回操作するか、どの文字がどのデータから来るかを確認すると修正を絞れる。表示名の改善で原文・数量・人の修正を失わないことも条件にする。フル版の確認機能を公開版の新機能と説明しない。
+
+## 5. 環境操作・整備
+
+**実際に行ったこと。** 公開デモはブラウザー保存と固定AI例を使い、フル版はバックエンド保存と許可されたAI呼び出しを使う構成に分けた。構築、バックアップ、別保存先への復旧、配信リソースの照合、公開対象ファイルの管理を行った。
+
+**問題と改善。** 同じ製品名でも、ブラウザー試用データ、固定例、フル版の業務データは別物である。ページが開くだけでは最新の公開版か分からず、HTTP 200だけでは不十分だった。公開識別子、Workflowのコミット、実際のJS/CSSを照合し、ファイル一覧とハッシュを管理する方法にした。
+
+**得られたこと。** 現在のAI利用が主に作者本人であるのは権限、呼び出し設定、費用の取り決めによる。製品が作者しか利用できないという意味ではない。会社で使うには、バックエンドの契約、認証、データ保存、モデル権限、費用負担を確認して接続検証する。会社が実行環境を用意しても、その時点で接続済みとはしない。
+
+## 6. コードの品質担保
+
+**実際に行ったこと。** 型検査、ビルド、決定的な自動テスト、実ブラウザーの操作、作者の実機確認を組み合わせた。それぞれが確認する対象を分け、有料モデル出力をテスト代替結果と混同しなかった。
+
+**問題と改善。** 保存層が書き込み失敗を捕まえても上位が成功とみなす不具合があり、入力が消える経路を修正した。永続成功・メモリーのみ・拒否を区別し、同じ保存の再試行で二重追加しないことを検証した。東京表示と端末タイムゾーンの混在は、日界と成果時刻を東京へ統一し、三つのタイムゾーンで確認した。公開検査は全Git対象ファイルと一覧の一致、スクリプト・Workflow・テキストの走査、ハッシュ、異常サンプルの拒否まで広げた。
+
+**得られたこと。** `a411447`では25件の回帰テスト、2件の公開方針テスト、三つのタイムゾーンの境界テストと、保存失敗・復旧のブラウザー操作が通った。ただしJSON読み込みのファイル選択ツールは途中で停止し、そのUI経路は未完了である。実機iPhone/Safari、ソフトキーボード、安全領域も残りを明記する。プログラムの合格を未実施の画面・実機合格に置き換えない。
+
+## 簡潔な変更沿革
+
+| 公開版・識別子 | 実装・整理したこと | 検証の位置付け |
+| --- | --- | --- |
+| `a764226` | 四ページの公開版と正式HTTPSの画面記録 | READMEの代表画像はこの時点の記録 |
+| `573a07f` | スマートフォンの週比較・展開、構造化された数量差 | フル版の確認フロー改善と公開可能な表示改善を区別 |
+| `df86243` | 前週比較と週全体の時間を示す短い説明 | 数量・時間計算を変更しない文言調整 |
+| `a411447` | 保存失敗・タイムゾーン・ルート・公開検査の修復、不要ファイル整理、安全な依存パッチ | 実績は検証記録の専用節を維持 |
+| `20261120-docs-ja-v1` | 製品文書、日本語注釈、六つの経験、チャットをまたぐ再開手順 | 文書と注釈の確認を今回分として分離 |
+
+## 次に行うこと
+
+今回の公開実行とリソース照合は[公開手順](../DEPLOYMENT.md)に従い、結果を検証記録とWorkflowで確認する。製品の次の確認は、未完了のJSON読み込みUIと実機操作。会社環境への接続は別途契約と権限を確認する。これらを今回の文書整理だけで完了扱いにしない。

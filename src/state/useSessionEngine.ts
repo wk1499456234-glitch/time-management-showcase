@@ -5,7 +5,7 @@ import { activeInDay, durations, todayBounds, type Action } from './sessionData'
 let singleton: LocalSessionStore | undefined
 function getStore() {
   if (!singleton) {
-    // Access to window.localStorage itself can throw in restricted browsers.
+    // 制限されたブラウザーではwindow.localStorageの取得自体が例外になり得る。
     const storage = { getItem: (key: string) => window.localStorage.getItem(key), setItem: (key: string, value: string) => window.localStorage.setItem(key, value) }
     singleton = new LocalSessionStore(storage, navigator.locks ? (name, work) => navigator.locks.request(name, work) : undefined)
   }

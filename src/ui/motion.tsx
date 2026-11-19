@@ -1,7 +1,7 @@
 import {useEffect, useRef, type ReactNode} from 'react'
 import {attachScrollReveal} from './scrollReveal'
 
-// Visible by default: failed/unsupported animation never hides content or blocks input.
+// 既定では表示する。動きの失敗や未対応で内容を隠したり、入力を妨げたりしない。
 export function Reveal({children,id,order=0}:{children:ReactNode;id:string;order?:number}) {
   const ref=useRef<HTMLDivElement>(null)
   useEffect(()=>{

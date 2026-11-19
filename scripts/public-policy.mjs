@@ -8,7 +8,7 @@ export const forbidden=[/127\.0\.0\.1/,new RegExp('local'+'host'),new RegExp('51
  /proj_[A-Za-z0-9]{12,}/,/resp_[A-Za-z0-9]{12,}/,/gh[pousr]_[A-Za-z0-9]{20,}/,/[CD]:[\\/](?:Users|PersonalDev)/,
  /[A-Z0-9._%+-]+@gmail\.com/i]
 export function scanText(path,raw){
- // Only this fail-closed origin guard in the non-shipped test has an exception.
+ // 非配信テストにあるこの接続元ガードだけを例外とする。不一致時の拒否は維持する。
  if(path==='tests/browser-storage.ts')raw=raw.replace("location.origin !== 'http://"+'127.0.'+'0.1'+":5185'","location.origin !== 'isolated-test-origin'")
  for(const pattern of forbidden)assert.ok(!pattern.test(raw),`${path}: prohibited content ${pattern}`)
 }
@@ -34,7 +34,7 @@ export function verifySource(root){
  const sums=read('CHECKPOINT.sha256').toString('utf8').trim().split(/\r?\n/).map(line=>line.split('  '))
  assert.deepEqual(sums.map(([,p])=>p).sort(),manifest.filter(p=>p!=='CHECKPOINT.sha256').sort(),'Every public file needs one checksum')
  for(const [hash,path] of sums)assert.equal(createHash('sha256').update(read(path)).digest('hex'),hash,`Changed after review: ${path}`)
- // Commit publishes the index, not merely the files visible in the editor.
+ // コミットの対象はエディター上のファイルではなく、ステージ済みの内容である。
  assert.equal(execFileSync('git',['ls-files','--others','--exclude-standard','--','.'],{cwd:root,encoding:'utf8'}).trim(),'','Review and stage new public files before release')
  execFileSync('git',['diff','--exit-code','--quiet','--','.'],{cwd:root,stdio:'pipe'})
  return manifest.length

@@ -1,4 +1,4 @@
-/* Reference-led layout. Functional controls remain separate from decorative art. */
+/* 参考画面に沿った配置。操作部品は装飾の図形と分けて実装する。 */
 :root{--ink:#17191d;--muted:#58616b;--line:#d9dde3;background:#f7f8fb}
 .site-header{min-height:64px;max-width:1440px;padding:0 4%;gap:24px}
 .brand{font-size:27px;letter-spacing:-.025em;font-weight:700;gap:11px}
@@ -124,7 +124,7 @@
 }
 @media(max-width:350px){.brand{font-size:24px}.main-content{padding-left:18px;padding-right:18px}.timer-heading time{font-size:16px}.today-heading{gap:5px}.today-heading h2{font-size:24px}.today-heading .text-button{font-size:16px}.main-nav a{font-size:12px}.timer-actions .button{font-size:19px}.composer label{font-size:25px}.review-callout .callout-art{display:none}}
 
-/* Supporting text remains readable at mobile widths without scaling the layout. */
+/* スマートフォン幅でも配置全体を縮小せず、補足文の読みやすさを保つ。 */
 .day-bar,.bar-value{font-size:16px}.saved-info{margin-top:14px;font-size:16px;color:var(--muted)}
 .saved-info summary{justify-content:flex-start;gap:8px}.saved-info p{margin-top:8px}
 @media(max-width:760px){.weekly-facts span{font-size:17px}.review-service,.review-context{font-size:16px}.main-nav a{font-size:13px}}

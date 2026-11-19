@@ -7,7 +7,11 @@ PROVENANCE.md
 PUBLIC-FILES.txt
 README.md
 README.zh-CN.md
+docs/DESIGN.md
 docs/DEVELOPMENT-PROGRESS.md
+docs/DEVELOPMENT-WORKFLOW.md
+docs/RECORD-DEFINITION.md
+docs/REQUIREMENTS.md
 docs/VALIDATION.md
 docs/screenshots/mobile-evidence-390.jpg
 docs/screenshots/mobile-history-390.jpg

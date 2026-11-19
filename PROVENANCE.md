@@ -1,9 +1,46 @@
-# Source provenance / 来源
+# 出典・来歴
 
-TimeWeave is an independent static browser edition of the time-and-Output product. The original browser persistence design was selectively integrated with the four-page interface, woven artwork, icons and scroll reveal. This repository has its own history and contains no backend, runtime database, credentials or development-platform code.
+## コードと視覚素材
 
-`src/data/ai-demo.json` contains five fictional weeks: 27 background records prepared without AI, three saved real model parses with explicit human type confirmation, and one saved Japanese model review. Quantities, original text, model output and confirmation provenance are retained from the reviewed public fixture. A technical time label in the historic review prose had been converted to its user-facing Japanese name by the product presentation layer; this is not a new model response.
+TimeWeave公開版は、時間と成果を記録する製品から独立させた静的ブラウザー版である。従来のブラウザー保存機構へ、四ページのUI、編み目の図形、アイコン、スクロール表示を選択的に統合した。バックエンド、実行用データベース、資格情報、開発プラットフォームは含めない。
 
-The cleanup removes only the fixture's root-level aggregate usage metadata. No record, result or provenance field is removed. Visitor records remain separate and are never represented as the source of the saved review. No new AI call is made by this edition.
+編み目はプロジェクト内で作成したSVGとコードによる図形（[独立素材](src/assets/timeweave-ribbons.svg)、[表示](src/ui/WeaveArt.tsx)、[小型マーク](src/ui/WeaveMark.tsx)）である。画面イメージをそのまま背景にせず、文字、入力、操作、グラフはコンポーネントで描画する。依存ライブラリとその版は[package.json](package.json)と[ロックファイル](package-lock.json)に記録する。
 
-No open-source license or third-party reuse rights have been granted implicitly.
+## 固定データの構成
+
+[ai-demo.json](src/data/ai-demo.json)は、個人の学習履歴ではなく、確認用に準備した架空の学習データである。東京時間、月曜始まりで、30回の活動を含む。
+
+| 週 | 役割 | 活動数 | 有効時間 |
+| --- | --- | --- | --- |
+| 2026-10-12〜10-18 | 比較履歴 | 6 | 180分 |
+| 2026-10-19〜10-25 | 比較履歴 | 6 | 180分 |
+| 2026-10-26〜11-01 | 比較履歴 | 6 | 180分 |
+| 2026-11-02〜11-08 | 比較履歴 | 6 | 180分 |
+| 2026-11-09〜11-15 | AI振り返りの対象週 | 6 | 180分 |
+
+27件の成果は背景としてあらかじめ用意したもので、AIの解析結果ではない。11月9〜11日の指定した3件は実モデルで解析し、その後に人が正式な分類を確認した。元の原文、AI解析、確認後の成果、確認内容と由来の区別を保持する。複数成果と、数量を付けない理解のメモも含む。
+
+対象週の集計は60語・20問・12ページで、単位を分ける。原文の計画や未完了量を完成量へ足さない。比較、時間、数量の詳しい意味は[記録・集計定義書](docs/RECORD-DEFINITION.md)を参照する。
+
+## 保存されたAI結果
+
+三つの解析と対象週の日本語振り返りは、実際のProvider呼び出しで取得・点検した結果を保存したもの。モデルは`gpt-5.4-mini-2026-03-17`。テスト代替出力を実モデルの結果として公開していない。背景データと実解析の出典は`source`、元の解析は`aiItems`、確認内容は`confirmation`で参照できる。
+
+保存された歴史的な振り返り本文には、製品の表示処理で技術的な時間項目名を利用者向けの日本語に変えた箇所がある。生のモデル応答を無変更で全文公開したものとは区別し、新たなモデル応答として扱わない。今回の文書整理で原文・解析・確認・振り返りの内容は変更しない。
+
+`a411447`の整理では、ルート階層の集計用`usage`メタデータだけを削除した。記録、AI結果、確認や由来の項目は保持している。詳細なアカウント情報、費用台帳、呼び出しの詳細記録は非公開資料で管理し、本公開版の利用条件とは分ける。
+
+訪問者の試用データは固定例に取り込まれない。公開版の閲覧・入力は新しいAI呼び出しを行わず、訪問者の分析を生成したように見せない。
+
+## 画像の用途と時点
+
+| ファイル | 用途と範囲 |
+| --- | --- |
+| [timeweave-review-desktop.jpg](docs/screenshots/timeweave-review-desktop.jpg) | `a764226`で収録したデスクトップの実ブラウザー画面。READMEの代表画像 |
+| [timeweave-review-390.jpg](docs/screenshots/timeweave-review-390.jpg) | 同じ段階の390pxブラウザー表示。実機iPhoneの証拠ではない |
+| [mobile-history-390.jpg](docs/screenshots/mobile-history-390.jpg) | 後のモバイル表示修正で記録した展開済み履歴。ブラウザー視口による確認 |
+| [mobile-evidence-390.jpg](docs/screenshots/mobile-evidence-390.jpg) | 同じ段階の根拠展開。ブラウザー視口による確認 |
+
+画像は歴史的な画面の例であり、本ドキュメント更新時点の新しい実機検証を示さない。後二枚は実体がJPEGのため、`a411447`で拡張子を画像形式に合わせた。検証結果の時点は[検証記録](docs/VALIDATION.md)で区別する。
+
+このリポジトリの公開をもって、オープンソースライセンスや第三者素材の再利用権を暗黙に付与するものではない。

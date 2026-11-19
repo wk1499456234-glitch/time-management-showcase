@@ -40,10 +40,10 @@ function AppShell(){
       backup?.focus({preventScroll:true});backup?.scrollIntoView({block:'start'})
     }
     const reduced=matchMedia('(prefers-reduced-motion: reduce)')
-    // Critical timer inputs stay visible and usable throughout navigation.
+    // 画面移動中も、計時に必要な入力は表示したまま操作できる。
     const target=route==='timer'?element.querySelector<HTMLElement>('.page-intro'):element
     let animation:Animation|undefined
-    try {if(!reduced.matches)animation=target?.animate?.([{opacity:.2},{opacity:1}],{duration:200,easing:'ease-out'})} catch { /* Animation failure must not interrupt the page. */ }
+    try {if(!reduced.matches)animation=target?.animate?.([{opacity:.2},{opacity:1}],{duration:200,easing:'ease-out'})} catch { /* 動きの失敗で画面操作を妨げない。 */ }
     const cancel=()=>{if(reduced.matches)animation?.cancel()};reduced.addEventListener('change',cancel)
     return()=>{animation?.cancel();reduced.removeEventListener('change',cancel)}
   },[route,visit])

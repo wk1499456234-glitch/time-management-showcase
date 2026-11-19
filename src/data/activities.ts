@@ -1,8 +1,8 @@
 import type { Activity } from '../types'
 
 /**
- * V1 prototype uses a fixed set of mock activities with stable ids.
- * Display names are resolved through i18n (see i18n/locales), not hardcoded here.
+ * 公開デモは、安定した識別子を持つ固定の活動候補を使う。
+ * 表示名はここへ直接書かず、i18n/localesの翻訳から取得する。
  */
 export const ACTIVITIES: Activity[] = [
   { id: 'act-ai-dev', nameKey: 'activity.ai_dev' },

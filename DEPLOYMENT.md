@@ -1,25 +1,52 @@
-# Static release and recovery
+# ビルド・公開・復旧
 
-This repository builds the independent TimeWeave browser demo for its existing GitHub Pages subpath. Only `dist/` is deployed. There is no server, login or AI API in this edition.
+このリポジトリは既存のGitHub Pagesサブパスへ配信するTimeWeave公開デモを構築する。公開対象は`dist/`のみ。バックエンド、ログイン、AI APIはこの版に含まれない。
 
-## Release identity
+## 公開版の識別
 
-- This revision's HTML marker: `20261119-public-reliability-v1`.
-- Previous accepted public commit: `df86243777b2694388b440baf7bee54e036f5f00`, marker `20261119-copy-polish-v1`, [successful workflow 44520541381](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/44520541381).
-- The release commit is the `head_sha` of the successful **Deploy time management showcase** run for this marker. Match that SHA to the checkout and its `index.html`; do not substitute a documentation-only commit or an old HTTP 200 response. The workflow summary records SHA and marker together.
+| 対象 | 識別情報 |
+| --- | --- |
+| 正式URL | https://wk1499456234-glitch.github.io/time-management-showcase/ |
+| 今回の文書・注釈更新 | HTMLの`release`値：`20261120-docs-ja-v1` |
+| 直前の検証・公開済み版 | `a4114478878b5186f4e9b06575ae348b1d87b811`、`20261119-public-reliability-v1` |
+| 直前版の成功した公開実行 | [44543484452](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/44543484452) |
+| 使用Workflow | [.github/workflows/pages.yml](.github/workflows/pages.yml) |
 
-## Publish and verify
+今回のソース版は、この識別子に対応する成功した「Deploy time management showcase」実行の`head_sha`で特定する。[実行一覧](https://github.com/wk1499456234-glitch/time-management-showcase/actions)で対象コミットと結果を確認し、SummaryのコミットとHTML識別子を照合する。別の文書コミット、古いHTTP 200、過去の成功実行で代用しない。
 
-1. Review source and documentation, including removals. Run `npm ci`, `npm test`, `npm run typecheck`, `npm run build`, `npm audit` and `npm audit --omit=dev`.
-2. Refresh `PUBLIC-FILES.txt` and `CHECKPOINT.sha256` using `node scripts/manifest.mjs`. Review the generated list before staging. Stage only reviewed files, then run `npm run check:public`: it requires exact equality with tracked and non-ignored candidate files, scans all text and verifies hashes.
-3. Use the authenticated account's verified GitHub noreply email in this repository only. Commit and normally push `main`; never force push. A push triggers `.github/workflows/pages.yml`.
-4. Verify that exact run succeeds, then compare the official HTML release marker and downloaded JS/CSS bytes to the accepted `dist/`. Confirm the four hash routes, old `#backup` and nested `#/settings/backup`, history navigation and refresh on the Pages subpath.
-5. Use disposable fictional browser records to check save, edit, retry and JSON restore. Read the fixed example week separately. Public runtime CSP uses `connect-src 'none'`; no API requests should occur.
+## ビルドと公開前の確認
 
-## Recovery and local records
+Node.js 22とnpmを使う。公開リポジトリのルートで次を実行する。
 
-Before changing domain or clearing site data, export JSON from Settings. Keep the original file. Import previews record counts and merges identical records once; conflicting IDs are rejected. A failed write is not a successful restore: retain the page and retry or export the in-memory branch. Browser keys and JSON schema are unchanged by this release.
+```sh
+npm ci
+npm run typecheck
+npm test
+npm run build
+npm audit
+npm audit --omit=dev
+node scripts/manifest.mjs
+```
 
-To revert this release, make a new revert commit and deploy it through the same workflow, using the previous accepted commit above as the reference. Preserve visitor storage and drafts; do not reset the remote or overwrite user data. The preceding version has the known save-failure reporting issue, so prefer a forward repair if that path is needed.
+1. 変更・削除・追加を含む実際の差分を確認する。文書だけの更新でも、現行コードとの整合性、相対リンク、画像、残っている他言語の説明を確認する。
+2. 生成した`PUBLIC-FILES.txt`と`CHECKPOINT.sha256`を点検する。非公開資料、資格情報、データベース、個人記録、詳細ログを含めない。
+3. 確認したファイルだけをステージし、`npm run check:public`を実行する。Git追跡・非無視ファイルと一覧の完全一致、ステージ内容との一致、全テキストの禁止情報、画像形式、ハッシュ、構築物を検査する。異常を例外追加で安易に回避しない。
+4. 対象リポジトリだけに、利用中アカウントで確認したGitHub noreplyメールを設定する。レビュー済み差分をコミットし、通常のpushで`main`を更新する。旧履歴の書き換えやforce pushは行わない。
 
-Browser storage belongs to an origin, not a URL path. A storage namespace prevents accidental key collisions but does not isolate applications sharing that origin. Moving origins requires export from the old origin and import at the new one.
+Workflowは型検査・テスト・ビルド・公開ファイル検査を実行し、合格した`dist/`をPagesへ配信する。文書はリポジトリ上で読むもので、別途HTML化してアプリへ組み込まない。
+
+## 正式配信の確認
+
+1. 今回のコミットを対象とするWorkflowのbuildとdeployが成功したか確認する。
+2. 正式HTMLの`release`値と、参照するJS/CSSの名前・取得したバイト列を、受け入れ済み`dist/`と照合する。文書・注釈だけなら実行資源が直前版と同じでも不自然ではない。HTMLとWorkflowで今回の公開を識別する。
+3. 動作変更時は、四ページの直通、戻る・進む、再読み込み、旧`#backup`と`#/settings/backup`を確認する。試用データと固定例は別々に確認する。
+4. 隔離した架空の試用データで保存・編集・再試行・JSON復元を確認する。CSPは`connect-src 'none'`で、入力を外部APIへ送らない。
+5. HTTP照合、ブラウザー操作、実機確認を分けて[検証記録](docs/VALIDATION.md)へ残す。本更新では新しい実機合格を主張しない。
+
+## 復旧とブラウザー記録
+
+今回の文書更新を戻す場合は、直前版`a411447`を基準に今回の変更を取り消す**新しいコミット**を作り、同じWorkflowで配信する。既存の未コミット変更を保全し、遠端履歴をリセットしない。保存失敗の修復を含む`a411447`より前へ、理由なく戻さない。
+
+公開先やブラウザーを変える前、サイトデータを消す前には設定からJSONを書き出し、元ファイルを残す。読み込みでは件数を確認し、同一記録の重複を避け、矛盾する内容を拒否する。書き込み失敗は復元成功ではない。ページを保持して再試行するか、メモリー上の記録を書き出す。
+
+今回もブラウザー保存キーと形式は変更しない。ソースの復旧は利用者の保存内容の復旧とは別であり、サイトデータや草稿を消去しない。ブラウザー保存はURLのパスではなくオリジンに属する。同じオリジン内の名前空間だけでは他アプリからの厳密な隔離にならない。別オリジンへの移行は旧環境からの書き出しと新環境での読み込みが必要になる。

@@ -9,7 +9,7 @@ import demo from '../data/ai-demo.json'
 export const date=(n:number)=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(n)
 const time=(n:number)=>new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit'}).format(n)
 type Sample=typeof demo.records[number]
-// Preserve original fixture text, including provenance recorded in the raw text.
+// 原文に記された由来も含め、固定例の文章をそのまま保持する。
 const displayRecordText=(text:string)=>text
 export function useWords(){const {locale}=useLocale();return (ja:string,zh:string)=>locale==='ja-JP'?ja:zh}
 function More({title,children}:{title:string;children:ReactNode}){return <details><summary>{title}<Icon name="chevron" size={16}/></summary><div className="detail-inner">{children}</div></details>}

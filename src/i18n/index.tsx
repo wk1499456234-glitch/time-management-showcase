@@ -39,7 +39,7 @@ const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<Locale>(() => { try { return localStorage.getItem('time-management.showcase.locale') === 'zh-CN' ? 'zh-CN' : 'ja-JP' } catch { return 'ja-JP' } })
-  useEffect(() => { document.documentElement.lang = locale; try { localStorage.setItem('time-management.showcase.locale', locale) } catch { /* Language stays usable without storage. */ } }, [locale])
+  useEffect(() => { document.documentElement.lang = locale; try { localStorage.setItem('time-management.showcase.locale', locale) } catch { /* 保存できなくても表示言語は切り替えられる。 */ } }, [locale])
 
   const t = useCallback(
     (key: string, vars?: Vars) => {

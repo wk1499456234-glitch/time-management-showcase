@@ -1,4 +1,4 @@
-// In-memory only: returning to a page must not hide sections already read.
+// メモリー内だけで保持する。戻った画面で既読の区画を再び隠さない。
 const seenSections = new Set<string>()
 
 export function attachScrollReveal(element: HTMLElement, id: string, order = 0, seen = seenSections) {
@@ -9,7 +9,7 @@ export function attachScrollReveal(element: HTMLElement, id: string, order = 0, 
   const visible = () => {
     finished = true
     seen.add(id)
-    // Bound memory without changing persistence or recording user content.
+    // 永続保存を変えず、利用者の内容も記録せずに、メモリー使用量を制限する。
     if (seen.size > 500) seen.delete(seen.values().next().value!)
     observer?.disconnect()
     animation?.cancel()
@@ -27,8 +27,8 @@ export function attachScrollReveal(element: HTMLElement, id: string, order = 0, 
   try {
     reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
     const bounds = element.getBoundingClientRect()
-    // Initial viewport/above-viewport content stays visible. Only later sections
-    // are armed; long groups never need to expose a percentage of their height.
+    // 初期表示領域とその上の内容は表示したままにする。後続の区画だけを待機させ、
+    // 長い区画でも高さに対する表示割合を条件にしない。
     if (seen.has(id) || reduced.matches || bounds.top < window.innerHeight ||
         element.contains(element.ownerDocument.activeElement)) {
       visible()
@@ -41,7 +41,7 @@ export function attachScrollReveal(element: HTMLElement, id: string, order = 0, 
         const bounds = element.getBoundingClientRect()
         if (reduced?.matches || bounds.bottom <= 0 ||
             element.contains(element.ownerDocument.activeElement)) { visible(); return }
-        // Remove pending only after WAAPI starts. No flash from visible to hidden.
+        // WAAPIの開始後にだけ待機状態を解除し、表示から非表示へのちらつきを避ける。
         animation = element.animate([
           {opacity: 0, transform: 'translateY(12px)'},
           {opacity: 1, transform: 'translateY(0)'},
@@ -56,7 +56,7 @@ export function attachScrollReveal(element: HTMLElement, id: string, order = 0, 
     element.addEventListener('focusin', focused)
     reduced.addEventListener('change', motionChanged)
     observer.observe(element)
-    // Default CSS is visible. Set this only after successful observer setup.
+    // CSSの既定値は表示。監視の設定に成功してから待機状態にする。
     if (!finished) element.dataset.revealPending = ''
   } catch { visible() }
   return cleanup

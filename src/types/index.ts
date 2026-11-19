@@ -6,7 +6,7 @@ export type RunStatus = 'idle' | 'running' | 'paused'
 
 export interface Activity {
   id: string
-  /** i18n key for the display name, e.g. "activity.ai_dev" */
+  /** 表示名のi18nキー。例："activity.ai_dev" */
   nameKey: string
 }
 

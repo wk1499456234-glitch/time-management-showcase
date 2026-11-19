@@ -6,8 +6,8 @@ export type LockPort = (name: string, callback: () => void) => Promise<unknown>
 export type SaveResult = { status: 'saved' | 'memory-only' | 'unchanged' }
 export interface StoreSnapshot { data: SessionData; warning: string; conflict: boolean; unsaved: boolean; savedOutput?: { text: string; revision: string } }
 
-// All writers use one same-origin Web Lock; raw baseline comparison detects stale tabs,
-// deletion, external edits and imports. No lease expiry or read/modify/write race.
+// 同一オリジンの書き込みを一つのWeb Lockで直列化し、保存値との比較で古いタブ、
+// 削除、外部編集、読み込みを検出する。期限切れや読み取り・更新・書き込みの競合を避ける。
 export class LocalSessionStore {
   private baseline: string | null = null
   private blocked = false
@@ -38,7 +38,7 @@ export class LocalSessionStore {
     try { if (this.storage.getItem(STORAGE_KEY) !== this.baseline) this.conflict() }
     catch { this.publish({ ...this.snapshot, warning: 'errors.storageRead', unsaved: true }) }
   }
-  // Only the explicit UI confirmation may replace this tab's in-memory branch.
+  // 画面で明示確認した場合だけ、このタブのメモリー上の変更を置き換える。
   reload = () => {
     try {
       const raw = this.storage.getItem(STORAGE_KEY)
@@ -67,10 +67,10 @@ export class LocalSessionStore {
     let result: SaveResult = { status: 'unchanged' }
     const work = () => {
       if (this.snapshot.conflict) throw new Error('errors.staleAction')
-      // A failed write already applied the operation in memory. Retry that branch,
-      // never replay the append/import, and reject unrelated changes until saved.
+      // 書き込み失敗時も操作はメモリーへ適用済み。その状態の保存だけを再試行し、
+      // 追加・読み込みは再実行しない。保存が終わるまで別の変更を拒否する。
       if (this.snapshot.unsaved && key && key !== this.pendingKey) throw new Error('errors.retryFirst')
-      // Checking before transition means rejected cross-tab clicks are never replayed.
+      // 状態遷移前に検査し、他タブとの競合で拒否した操作を再実行しない。
       if (!this.blocked) {
         try {
           if (this.storage.getItem(STORAGE_KEY) !== this.baseline) { this.conflict(); throw new Error('errors.changed') }
@@ -85,7 +85,7 @@ export class LocalSessionStore {
       if (changed === previous && !retry) return
       const data = retry ? previous : { ...changed, revision: this.uuid() }
       const raw = JSON.stringify(data)
-      // Validate our own envelope too; rejected imports cannot partially mutate state.
+      // 生成した保存形式も検査する。拒否した読み込みで状態を部分更新しない。
       parseData(raw)
       if (!retry) { this.pendingKey = key ?? null; this.pendingAction = action }
       let warning = this.snapshot.warning, unsaved = true

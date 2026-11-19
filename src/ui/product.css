@@ -399,7 +399,7 @@ h1{font-size:28px;margin:12px 0 8px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 ::view-transition-old(root),::view-transition-new(root),::view-transition-group(root){animation:none!important}
 }
-/* Readable supporting copy; smaller type is reserved for decorative edition labels. */
+/* 補足文も読みやすくする。小さな文字は装飾的な版表示に限る。 */
 .preview-description,.preview-label,.scenario-button,.overline,.status,.badge,.row-head>.small,.output-detail>summary,.composer-footer .small,.history-date small,.as-of,.context-notes,.comparison-tabs button,.review-actions .text-button,.limits,.metadata,.setting-row p.small,.site-footer{font-size:var(--text-meta)}
 @media(max-width:760px){.preview-strip,.scenario-button{font-size:var(--text-meta)}
 .main-nav a{font-size:var(--text-meta)}
@@ -409,7 +409,7 @@ h1{font-size:28px;margin:12px 0 8px}
 .history-date small,.page-tools>.small,.select-label,.as-of,.context-notes,.comparison-tabs button,.review-actions .text-button,.finding p.small,.backup-option .actions .button,.setting-row p.small,.limits,.metadata,.site-footer{font-size:var(--text-meta)}
 }
 .finding-number,.suggestions>div>span{flex-shrink:0;white-space:nowrap;min-width:18px}
-/* Product integration: no preview controls, no simulated state. */
+/* 製品への統合：プレビュー操作や模擬状態を含めない。 */
 :root{font-family:"Segoe UI","Yu Gothic UI","Microsoft YaHei UI",sans-serif;--muted:#566170}
 :root:lang(zh-CN){font-family:"Noto Sans SC","Microsoft YaHei UI","Segoe UI",sans-serif}
 :root:lang(ja-JP){font-family:"Noto Sans JP","Yu Gothic UI","Segoe UI",sans-serif}
@@ -566,7 +566,7 @@ dd{margin-bottom:8px}
 .clock{font-family:inherit;letter-spacing:-.04em}
 .composer textarea::placeholder{color:#626e7d;opacity:1}
 .finding-number,.activity-symbol{color:#626e7d}
-/* Only successfully observed, below-viewport sections wait for scroll. */
+/* 監視を開始できた表示領域より下の区画だけ、スクロールを待つ。 */
 [data-reveal-pending]{opacity:0;transform:translateY(12px)}
 [data-reveal]:focus-within{opacity:1!important;transform:none!important}
 .review-body .review-overview-title{font-size:var(--text-label)}
@@ -589,7 +589,7 @@ dd{margin-bottom:8px}
 @media(max-width:350px){.composer-footer .button{width:100%}
 }
 
-/* TimeWeave: compact daily context and a factual weekly reading sequence. */
+/* TimeWeave：簡潔な今日の概況と、記録に基づく週の読み進め方。 */
 .weave-mark{width:32px;height:32px}
 .activity-symbol{white-space:nowrap;flex-shrink:0}
 .brand-mark{background:none;color:#34495e;border-radius:0;width:32px;height:32px}

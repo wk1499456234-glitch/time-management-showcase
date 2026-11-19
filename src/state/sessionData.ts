@@ -30,7 +30,7 @@ export function durations(run: { startAt: number; pauseIntervals: PauseInterval[
   return { elapsedMs, pauseMs, activeMs: Math.max(0, elapsedMs - pauseMs) }
 }
 export function todayBounds(now: number): [number, number] {
-  // Asia/Tokyo has no daylight-saving change in the supported record period.
+  // 対象の記録期間では、Asia/Tokyoに夏時間の切り替えはない。
   const offset = 9 * 3600000, day = 86400000
   const start = Math.floor((now + offset) / day) * day - offset
   return [start, start + day]

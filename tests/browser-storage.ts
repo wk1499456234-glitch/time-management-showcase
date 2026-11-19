@@ -1,7 +1,7 @@
 import { LocalSessionStore, type StoragePort } from '../src/state/localSessionStore'
 import { parseData } from '../src/state/sessionData'
 
-// Only the dedicated acceptance origin is allowed; never touches the daily origin.
+// 専用の検証オリジンだけを許可し、日常利用のオリジンには触れない。
 const button = document.querySelector('button')!
 const result = document.querySelector('pre')!
 button.addEventListener('click', async () => {
