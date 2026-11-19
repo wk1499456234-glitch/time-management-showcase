@@ -1,6 +1,6 @@
 # 開発記録（抜粋）
 
-最新の公開段階は末尾「2026-11-19 · TimeWeave static UI」。四画面・ブラウザー保存・保存済み実AI例を公開済みです。10月の未実装項目は当時の記録として保持し、現在の機能とは区別します。
+最新の公開段階は末尾「2026-11-19 · モバイル比較と根拠の読みやすさ」。四画面・ブラウザー保存・保存済み実AI例を公開済みです。10月の未実装項目は当時の記録として保持し、現在の機能とは区別します。
 
 時間管理ソフトの既存の仕様書と段階ごとの記録から、目的、決定理由、確認できたこと、残っていることを抜粋しました。情報は複数の文書に分かれており、これは開発の全履歴ではありません。
 
@@ -142,3 +142,10 @@
 - Build and 17 existing persistence/fixture/route checks pass. Local browser verified timer actions, paused draft navigation, raw save/edit/reload, and 390px review layout. Formal Pages verification is recorded separately after deployment. Actual iPhone/Safari testing remains pending.
 - Public artifacts have no private server connection. Pages build validation and the manifest/hash checks run on `main` pushes; the preceding public commit remains the rollback reference.
 - Functional release `e581c0b` deployed successfully. Formal HTTPS checks cover navigation, saved example evidence, timer/raw edits, pause/reload, JSON export/import without duplicates, and 1280/390/320px layouts. Existing trial storage remains separate from the unchanged fictional fixture. Detailed evidence and limitations are in the latest section of VALIDATION.md; browser viewport checks do not constitute physical-phone acceptance.
+
+
+## 2026-11-19 · モバイル比較と根拠の読みやすさ
+
+五列の表が小画面で数字や単位を分断したため、モバイルのみ日付と二列指標の週別表示へ変更しました。広い画面は表を維持します。数量比較は保存された統計から算出し、前週・対象週・前4週平均を明示。AI原文を編集する代わりに、簡潔な比較と保存文の展開を分けました。説明と根拠は開閉でき、固定例と訪問者の試用記録の境界は維持しています。
+
+20件のテストと型/build、日中320/390/1280pxの展開操作を確認。実機iPhone/Safariとソフトキーボードは再確認待ちです。詳しい実行範囲はVALIDATION.mdに記載しています。

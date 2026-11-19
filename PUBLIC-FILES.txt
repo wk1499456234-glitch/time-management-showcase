@@ -10,6 +10,8 @@ README.zh-CN.md
 docs/DEVELOPMENT-PROGRESS.md
 docs/VALIDATION.md
 docs/screenshots/desktop.png
+docs/screenshots/mobile-evidence-390.png
+docs/screenshots/mobile-history-390.png
 docs/screenshots/mobile-overview.png
 docs/screenshots/mobile.png
 docs/screenshots/timeweave-review-390.jpg
@@ -46,12 +48,14 @@ src/styles/global.css
 src/types/index.ts
 src/ui/DemoPages.tsx
 src/ui/Outputs.tsx
+src/ui/ReviewComparison.tsx
 src/ui/ReviewPage.tsx
 src/ui/SettingsPage.tsx
 src/ui/TodayOverview.tsx
 src/ui/WeaveArt.tsx
 src/ui/WeaveMark.tsx
 src/ui/brand.ts
+src/ui/comparisonData.ts
 src/ui/copy.ts
 src/ui/data.ts
 src/ui/motion.tsx
@@ -66,6 +70,7 @@ src/utils/time.ts
 src/vite-env.d.ts
 tests/browser-storage.ts
 tests/build-browser-harness.mjs
+tests/comparison.test.ts
 tests/demo.test.ts
 tests/persistence.test.ts
 tests/run-tests.mjs

@@ -1,1 +1,30 @@
 .output-list{list-style:none;padding:0;margin:0}.output-list__item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:18px 0;border-bottom:1px solid var(--line)}.output-list__time{grid-column:1/-1;color:var(--muted);font-size:16px}.output-list__text,.full-raw{white-space:pre-wrap;overflow-wrap:anywhere}.output-list__item>span:last-child{grid-column:1/-1}.btn{border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit;padding:9px 15px;font:inherit;cursor:pointer}.btn:disabled{opacity:.5}.local-data-panel{max-width:100%}.local-data-panel input{max-width:100%}.date-group{margin:24px 0}.date-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.page-tools label{display:grid;gap:8px}.sample-scope{color:var(--muted);font-size:16px}.static-day-values{display:flex;gap:12px;flex-wrap:wrap}.table-scroll{overflow:auto}.table-scroll th,.table-scroll td{padding:10px;text-align:left}.page-heading .overline{display:none}.sample-summary{white-space:pre-wrap}.reference-link{margin-block:24px}.review-suggestions p{overflow-wrap:anywhere}@media(max-width:760px){.date-heading{display:block}.output-list__item input{width:100%}.setting-row details p{font-size:16px}}
+
+/* Keep comparison labels readable; mobile uses grouped facts rather than squeezing five columns. */
+.history-comparison .desktop-comparison{overflow:auto;max-width:100%}
+.history-comparison table{font-size:17px;white-space:normal;table-layout:auto}
+.history-comparison th,.history-comparison td{padding:12px;vertical-align:top;word-break:normal;overflow-wrap:normal}
+.history-comparison th:first-child{min-width:128px}.history-comparison th small{display:block;font-size:15px}
+.metric-value{display:inline-flex;flex-wrap:wrap;gap:.15em;max-width:100%;font-variant-numeric:tabular-nums}
+.metric-number{white-space:nowrap;font-variant-numeric:tabular-nums}.metric-unit{word-break:normal;overflow-wrap:anywhere;max-width:100%}
+.mobile-comparison{display:none}.selected-week{background:#edf2f6}
+.quantity-changes{margin:26px 0}.quantity-changes>article{padding:18px 0;border-bottom:1px solid var(--line)}
+.quantity-changes h3{font-size:20px;line-height:1.6;overflow-wrap:anywhere;margin:0 0 10px}
+.direct-comparison{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.direct-comparison>div{display:grid;gap:4px}
+.direct-comparison>div>span:first-child{font-size:16px;color:var(--muted)}.direct-comparison .metric-value{font-size:21px;font-weight:600}
+.comparison-mean{font-size:17px;margin:10px 0}.quantity-changes .evidence{margin-top:8px}
+.quantity-changes summary,.original-review summary,.comparison>summary{display:flex;align-items:center;gap:10px;min-height:48px}
+.quantity-changes summary svg,.original-review summary svg,.comparison>summary svg{flex-shrink:0}.quantity-changes .evidence p{font-size:17px}
+.original-review .finding{display:block;padding:14px 0}.original-review .finding h3{font-size:20px}
+.original-review .finding p{font-size:17px;line-height:1.8}.review-findings>summary{justify-content:space-between}
+@media(max-width:760px){
+ .desktop-comparison{display:none}.mobile-comparison{display:block}
+ .week-comparison-card{padding:18px 10px;border-bottom:1px solid var(--line)}
+ .week-comparison-card h3{font-size:17px;font-weight:600;line-height:1.7;margin:0 0 10px;word-break:normal;white-space:normal}
+ .comparison-tag{font-size:16px;color:#344f68;margin:0 0 10px}
+ .week-metrics{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 14px;margin:0}
+ .week-metrics>div{min-width:0}.week-metrics .wide-metric{grid-column:1/-1}
+ .week-metrics dt{font-size:16px;line-height:1.6;overflow-wrap:anywhere}.week-metrics dd{margin:4px 0 0;font-size:19px;font-weight:600;line-height:1.6}
+ .week-metrics dd.metric-number{font-size:19px}.quantity-changes h2{font-size:25px}.quantity-changes h3{font-size:19px}
+ .direct-comparison{gap:10px}.direct-comparison .metric-value{font-size:20px}.quantity-changes .evidence ul{padding-left:20px}
+}
