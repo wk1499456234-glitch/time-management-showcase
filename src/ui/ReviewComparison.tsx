@@ -17,7 +17,7 @@ export function HistoryComparison({weeks,selected}:{weeks:WeekFacts[];selected:s
 export function QuantityChanges({weeks,selected}:{weeks:WeekFacts[];selected:string}){
   const {locale}=useLocale(),ja=locale==='ja-JP',c=comparisonData(weeks,selected)
   const unavailable=ja?'比較資料なし':'缺少比较资料'
-  return <section className="quantity-changes"><h2>{ja?'成果の変化':'成果变化'}</h2><p className="small muted">{ja?'プログラムによる数量比較。時間は週全体の値で、成果ごとの時間ではありません。':'程序计算的数量对比。时间属于整周，不代表各项成果的专属耗时。'}</p>{c.current.quantities.map(q=>{
+  return <section className="quantity-changes"><h2>{ja?'成果の変化':'成果变化'}</h2><p className="small muted">{ja?'前週との比較。時間は週全体の合計です。':'与上周比较。时间为整周合计。'}</p>{c.current.quantities.map(q=>{
     const previous=c.previous?.quantities.find(p=>quantityKey(p)===quantityKey(q)),mean=c.means.find(p=>quantityKey(p)===quantityKey(q))
     return <article key={quantityKey(q)}><h3>{q.type}</h3><div className="direct-comparison"><div><span>{ja?'前週':'前周'}</span>{previous?<Value q={previous}/>:<span>{unavailable}</span>}</div><span aria-hidden="true">→</span><div><span>{ja?'対象週':'所选周'}</span><Value q={q}/></div></div><p className="comparison-mean">{ja?'前4週平均':'前4周平均'}：{mean?<Value q={mean}/>:unavailable}</p><details className="evidence"><summary>{ja?'根拠を見る':'查看依据'}<Icon name="chevron" size={18}/></summary><p>{ja?'対象週':'所选周'} · {selected} · <Value q={q}/></p>{previous&&<p>{ja?'前週':'前周'} · {c.previous!.week} · <Value q={previous}/></p>}{mean&&<ul>{[...c.prior].reverse().map(w=><li key={w!.week}>{w!.week} · <Value q={w!.quantities.find(p=>quantityKey(p)===quantityKey(q))!}/></li>)}</ul>}<a className="text-button" href="#/records/sample">{ja?'原文と確認済み成果を見る':'查看原文与已确认成果'}<Icon name="arrow" size={16}/></a></details></article>
   })}</section>
