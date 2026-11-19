@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" fill="none">
+  <defs>
+    <linearGradient id="silver" x1="400" y1="45" x2="400" y2="190" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".45" stop-color="#ebedf0"/><stop offset=".76" stop-color="#bec4ca"/><stop offset="1" stop-color="#f7f8fa"/></linearGradient>
+    <linearGradient id="graphite" x1="400" y1="65" x2="400" y2="210" gradientUnits="userSpaceOnUse"><stop stop-color="#d4d9de"/><stop offset=".4" stop-color="#818b95"/><stop offset=".7" stop-color="#aab3bc"/><stop offset="1" stop-color="#e7ebef"/></linearGradient>
+    <linearGradient id="ice" x1="400" y1="90" x2="400" y2="200" gradientUnits="userSpaceOnUse"><stop stop-color="#edf4f9"/><stop offset=".5" stop-color="#c1d4e3"/><stop offset="1" stop-color="#8faac0"/></linearGradient>
+    <filter id="shade" x="-10%" y="-40%" width="120%" height="190%"><feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#344451" flood-opacity=".13"/></filter>
+    <linearGradient id="edge"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".14" stop-color="#fff"/><stop offset=".86" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="fade"><path fill="url(#edge)" d="M0 0h800v250H0z"/></mask>
+  </defs>
+  <g mask="url(#fade)" filter="url(#shade)">
+    <path d="M0 56C173 8 245 92 388 142S605 207 800 147L800 173C598 229 520 218 381 164S174 33 0 82Z" fill="url(#silver)"/>
+    <path d="M0 108C165 73 208 116 348 168S535 141 661 88Q732 61 800 65V90Q726 84 664 111C529 170 492 240 337 192S157 97 0 134Z" fill="url(#ice)"/>
+    <path d="M0 168C172 199 257 158 373 100S546 123 655 166Q737 200 800 174V199Q734 225 646 189C537 145 495 75 381 124S170 225 0 193Z" fill="url(#graphite)"/>
+    <path d="M0 188C166 217 245 155 365 133S552 211 673 112Q741 57 800 46V72Q738 83 682 131C545 243 497 151 369 158S163 244 0 214Z" fill="url(#silver)"/>
+    <path d="M0 56C173 8 245 92 388 142S605 207 800 147" stroke="#fff" stroke-opacity=".8"/>
+    <path d="M0 188C166 217 245 155 365 133S552 211 673 112Q741 57 800 46" stroke="#fff" stroke-opacity=".9"/>
+  </g>
+</svg>

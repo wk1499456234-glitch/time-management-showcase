@@ -22,3 +22,9 @@ The earlier section describes the initial extraction, not the current desktop ru
 `src/data/ai-demo.json` contains only synthetic learning records and a field-by-field reviewed export of saved model results. Twenty-seven background records were prepared without AI; three parse responses and one Japanese weekly review were obtained from the stated model. Human confirmation changes type labels, not quantities or original text. A technical time label in review prose was replaced with its Japanese user-facing name by the product presentation layer. No full API response or request identifiers are included.
 
 The public repository contains no personal records, service credentials, account configuration, runtime database or private development platform. No license or third-party reuse rights are newly granted by this update.
+
+## 2026-11-19 TimeWeave UI delivery
+
+The accepted four-page product layout, typography, woven SVG and progressive disclosure are adapted to this independent static edition. The browser persistence engine and its storage key remain from this repository. No server authentication, Provider adapter, server configuration or database is included. Multi-line Output editing preserves line breaks.
+
+`src/data/ai-demo.json` is unchanged from public commit `3aba747`: five fictional weeks, 27 prestructured background records, three saved real model parses with human type confirmation, and one saved Japanese model review. The public runtime does not create new AI results. Newly recorded visitor data remains separate.

@@ -43,9 +43,9 @@ export function attachScrollReveal(element: HTMLElement, id: string, order = 0, 
             element.contains(element.ownerDocument.activeElement)) { visible(); return }
         // Remove pending only after WAAPI starts. No flash from visible to hidden.
         animation = element.animate([
-          {opacity: 0, transform: 'translateY(16px)'},
+          {opacity: 0, transform: 'translateY(12px)'},
           {opacity: 1, transform: 'translateY(0)'},
-        ], {duration: 540, delay: Math.min(Math.max(order, 0), 2) * 50,
+        ], {duration: 420, delay: Math.min(Math.max(order, 0), 2) * 40,
           easing: 'cubic-bezier(.2,.65,.3,1)', fill: 'backwards'})
         finished = true
         seen.add(id)

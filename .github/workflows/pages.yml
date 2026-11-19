@@ -1,5 +1,7 @@
 name: Deploy time management showcase
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read

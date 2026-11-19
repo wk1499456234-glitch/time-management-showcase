@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import assert from 'node:assert/strict'
+import {createHash} from 'node:crypto'
 const walk = root => readdirSync(root).flatMap(name => {const path=`${root}/${name}`; return statSync(path).isDirectory() ? walk(path) : [path]})
 const built=walk('dist')
 const forbidden = [/127\.0\.0\.1/, /localhost/, /5174/, /tailscale/i, /\.ts\.net/, /OPENAI_API_KEY/, /ANTHROPIC_API_KEY/, /sk-[A-Za-z0-9_-]{20,}/, /proj_[A-Za-z0-9]{12,}/, /resp_[A-Za-z0-9]{12,}/, /gh[pousr]_[A-Za-z0-9]{20,}/, /[CD]:[\\/](?:Users|PersonalDev)/]
@@ -19,6 +20,9 @@ for(const path of manifest) {
  assert.ok(!/(?:\.env|\.db$|\.sqlite|backup.*\.json$)/i.test(path),`Data/secret path: ${path}`)
  assert.ok(statSync(path).isFile(),`Missing public file: ${path}`)
 }
+const checksums=readFileSync('CHECKPOINT.sha256','utf8').trim().split(/\r?\n/).map(line=>line.split('  '))
+assert.deepEqual(checksums.map(([,path])=>path).sort(),manifest.filter(p=>p!=='CHECKPOINT.sha256').sort(),'Every public file needs a checksum')
+for(const [hash,path] of checksums)assert.equal(createHash('sha256').update(readFileSync(path)).digest('hex'),hash,`Changed after review: ${path}`)
 for(const path of manifest.filter(p=>/\.(md|json|tsx?|html|css)$/.test(p))){
  // Existing, non-shipped storage harness has a fail-closed origin equality guard.
  // Allow only its reviewed test origin; runtime src/dist above have no exception.

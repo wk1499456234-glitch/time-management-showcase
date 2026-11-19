@@ -131,3 +131,11 @@
 - 公開内容は白名簿で抽出した架空原文、確認結果、実解析、統計、表示済みモデル本文のみ。訪問者の記録とは別の読み取り専用データです。新規推論接続を持ちません。
 
 実行済み検証と未確認の環境は [VALIDATION.md](VALIDATION.md) を参照してください。
+
+## 2026-11-19 · TimeWeave static UI
+
+- Adapted the confirmed four-page TimeWeave layout to the existing browser persistence engine. Visitors can time, pause/resume/end, save and edit raw Output, read records and back up JSON; no server or paid generation controls are exposed.
+- Preserved the browser record namespace, draft key, original whitespace, IME save guard, transactional import and duplicate/conflict rules. A single-line legacy editor was changed to a textarea to retain line breaks.
+- Kept the previously published real-AI fixture unchanged. Added the current seven-day chart from timestamps and pauses, a clear sample/trial switch, and direct evidence links to the read-only sample records.
+- Build and 17 existing persistence/fixture/route checks pass. Local browser verified timer actions, paused draft navigation, raw save/edit/reload, and 390px review layout. Formal Pages verification is recorded separately after deployment. Actual iPhone/Safari testing remains pending.
+- Public artifacts have no private server connection. Pages build validation and the manifest/hash checks run on `main` pushes; the preceding public commit remains the rollback reference.

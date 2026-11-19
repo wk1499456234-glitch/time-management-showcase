@@ -13,7 +13,7 @@ export function OutputList({ outputs, emptyLabel, onEdit }: { outputs: OutputEnt
       <span className="output-list__time">{new Date(entry.createdAt).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })}</span>
       <span className="output-list__text">{entry.text}</span>
       {onEdit && (editing === entry.id ? <span>
-        <input aria-label={t('output.label')} value={draft} onChange={e => setDraft(e.target.value)} maxLength={20000} />
+        <textarea aria-label={t('output.label')} value={draft} onChange={e => setDraft(e.target.value)} maxLength={20000} rows={3} />
         <button type="button" className="btn btn--secondary" disabled={saving || !draft.trim()} onClick={async () => {
           setSaving(true);try { if(await onEdit(entry.id,draft)) setEditing(null) } finally {setSaving(false)}
         }}>{t('output.save')}</button>
