@@ -1,18 +1,18 @@
 # ビルド・公開・復旧
 
-このリポジトリは既存のGitHub Pagesサブパスへ配信するTimeWeave公開デモを構築する。公開対象は`dist/`のみ。バックエンド、ログイン、AI APIはこの版に含まれない。
+このリポジトリは既存のGitHub PagesサブパスへTimeWeaveの画面を配信する。公開対象は`dist/`のみ。バックエンド、ログイン、AI APIはこの版に含まれない。
 
 ## 公開版の識別
 
 | 対象 | 識別情報 |
 | --- | --- |
 | 正式URL | https://wk1499456234-glitch.github.io/time-management-showcase/ |
-| 今回の文書・注釈更新 | HTMLの`release`値：`20261120-docs-ja-v1` |
-| 直前の検証・公開済み版 | `a4114478878b5186f4e9b06575ae348b1d87b811`、`20261119-public-reliability-v1` |
-| 直前版の成功した公開実行 | [44543484452](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/44543484452) |
+| 実行資源の識別子 | HTMLの`release`値：`20261120-docs-ja-v1`。今回は文書のみのため変更しない |
+| 文書整理の基準・回復先 | `335d30fe2f74c51c32420bc2f2610a912b22f9fa` |
+| 基準版の成功した公開実行 | [44627899702](https://github.com/wk1499456234-glitch/time-management-showcase/actions/runs/44627899702) |
 | 使用Workflow | [.github/workflows/pages.yml](.github/workflows/pages.yml) |
 
-今回のソース版は、この識別子に対応する成功した「Deploy time management showcase」実行の`head_sha`で特定する。[実行一覧](https://github.com/wk1499456234-glitch/time-management-showcase/actions)で対象コミットと結果を確認し、SummaryのコミットとHTML識別子を照合する。別の文書コミット、古いHTTP 200、過去の成功実行で代用しない。
+公開したソース版は「Deploy time management showcase」実行の`head_sha`で特定する。[実行一覧](https://github.com/wk1499456234-glitch/time-management-showcase/actions)で今回のコミットの成功を確認し、そのコミットの文書と配信資源を照合する。文書のみの更新ではHTML識別子も保持されるため、識別子やHTTP 200だけで新しい文書の公開を判定しない。
 
 ## ビルドと公開前の確認
 
@@ -38,14 +38,14 @@ Workflowは型検査・テスト・ビルド・公開ファイル検査を実行
 ## 正式配信の確認
 
 1. 今回のコミットを対象とするWorkflowのbuildとdeployが成功したか確認する。
-2. 正式HTMLの`release`値と、参照するJS/CSSの名前・取得したバイト列を、受け入れ済み`dist/`と照合する。文書・注釈だけなら実行資源が直前版と同じでも不自然ではない。HTMLとWorkflowで今回の公開を識別する。
+2. 正式HTMLの`release`値と、参照するJS/CSSの名前・取得したバイト列を、受け入れ済み`dist/`と照合する。文書・注釈だけなら実行資源が直前版と同じでも不自然ではない。同じHTML識別子を使う文書更新では、今回のWorkflowの`head_sha`と、そのコミットで公開された文書の内容を併せて確認する。
 3. 動作変更時は、四ページの直通、戻る・進む、再読み込み、旧`#backup`と`#/settings/backup`を確認する。試用データと固定例は別々に確認する。
 4. 隔離した架空の試用データで保存・編集・再試行・JSON復元を確認する。CSPは`connect-src 'none'`で、入力を外部APIへ送らない。
 5. HTTP照合、ブラウザー操作、実機確認を分けて[検証記録](docs/VALIDATION.md)へ残す。本更新では新しい実機合格を主張しない。
 
 ## 復旧とブラウザー記録
 
-今回の文書更新を戻す場合は、直前版`a411447`を基準に今回の変更を取り消す**新しいコミット**を作り、同じWorkflowで配信する。既存の未コミット変更を保全し、遠端履歴をリセットしない。保存失敗の修復を含む`a411447`より前へ、理由なく戻さない。
+今回の文書更新を戻す場合は、基準版`335d30f`を参照して今回の文書変更を取り消す**新しいコミット**を作り、同じWorkflowで配信する。既存の未コミット変更を保全し、遠端履歴をリセットしない。保存失敗の修復を含む`a411447`より前へ、理由なく戻さない。
 
 公開先やブラウザーを変える前、サイトデータを消す前には設定からJSONを書き出し、元ファイルを残す。読み込みでは件数を確認し、同一記録の重複を避け、矛盾する内容を拒否する。書き込み失敗は復元成功ではない。ページを保持して再試行するか、メモリー上の記録を書き出す。
 
